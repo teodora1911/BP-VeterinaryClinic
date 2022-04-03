@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="pharmacyButton" alignment="CENTER" layoutX="120.0" layoutY="700.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pharmacyButtonClick" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #97E389;" text="Apoteka" textAlignment="CENTER">
+         <font>
+            <Font name="Lucida Bright" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="appointmentButton" alignment="CENTER" layoutX="350.0" layoutY="700.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#appointmentButtonClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: e9a08a;" text="Zakaži pregled" textAlignment="CENTER">
+         <font>
+            <Font name="Lucida Bright" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="loginButton" alignment="CENTER" layoutX="680.0" layoutY="700.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: aeaaba;" text="Prijava" textAlignment="CENTER">
+         <font>
+            <Font name="Lucida Bright" size="22.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="643.0" fitWidth="559.0" layoutX="180.0" layoutY="22.0">
+         <image>
+            <Image url="file:/D:/TEODORA/III/BP/PROJEKTNI%20ZADATAK/pictures/horse%20dog.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

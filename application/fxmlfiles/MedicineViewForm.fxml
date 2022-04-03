@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <ListView fx:id="listView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="650.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <Button fx:id="makeAppointmentButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#makeAppointmentClicked" style="-fx-background-color: #aec3b0;" text="Zakaži pregled" textAlignment="CENTER" textFill="#124559" BorderPane.alignment="TOP_CENTER">
+         <font>
+            <Font name="Calibri Light" size="23.0" />
+         </font>
+      </Button>
+   </bottom>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="25.0" />
+   </padding>
+</BorderPane>
