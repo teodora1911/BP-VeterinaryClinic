@@ -23,7 +23,7 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         System.out.println("application/fxmlfiles/StartPageForm.fxml");
-        URL url = getClass().getClassLoader().getResource("application" + File.separator + "fxmlfiles" + File.separator + "StartPageForm.fxml");
+        URL url = getClass().getClassLoader().getResource("application" + File.separator + "fxmlfiles" + File.separator + "StartPage.fxml");
         if(url == null){
             System.out.println("Problem sa URL-om");
             System.exit(-1);

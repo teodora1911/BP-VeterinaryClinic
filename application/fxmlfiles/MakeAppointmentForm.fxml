@@ -5,75 +5,84 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="79.0" layoutY="127.0" prefHeight="25.0" prefWidth="80.0" text="Ime:" textFill="#124559">
+      <Label layoutX="79.0" layoutY="127.0" prefHeight="29.0" prefWidth="350.0" text="Ime:" textFill="#124559">
          <font>
-            <Font name="Calibri Light" size="20.0" />
+            <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="493.0" layoutY="127.0" prefHeight="25.0" prefWidth="80.0" text="Prezime:" textFill="#124559">
+      <Label layoutX="493.0" layoutY="127.0" prefHeight="29.0" prefWidth="350.0" text="Prezime:" textFill="#124559">
          <font>
-            <Font name="Calibri Light" size="20.0" />
+            <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="76.0" layoutY="237.0" prefHeight="25.0" prefWidth="80.0" text="Email:" textFill="#124559">
+      <Label layoutX="76.0" layoutY="237.0" prefHeight="29.0" prefWidth="350.0" text="Email:" textFill="#124559">
          <font>
-            <Font name="Calibri Light" size="20.0" />
+            <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="338.0" layoutY="41.0" prefHeight="60.0" prefWidth="240.0" text="Zakažite pregled" textFill="#124559">
+      <Label alignment="CENTER" layoutX="338.0" layoutY="41.0" prefHeight="60.0" prefWidth="240.0" text="Zakažite pregled" textFill="#af1010">
          <font>
-            <Font name="Calibri Light" size="30.0" />
+            <Font name="Microsoft YaHei Light" size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="nameField" layoutX="79.0" layoutY="160.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eff6e0;">
+      <TextField fx:id="nameField" layoutX="79.0" layoutY="160.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eeeeee;">
          <font>
-            <Font name="Calibri Light" size="20.0" />
+            <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="surnameField" layoutX="493.0" layoutY="160.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eff6e0;">
+      <TextField fx:id="surnameField" layoutX="493.0" layoutY="160.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eeeeee;">
          <font>
-            <Font name="Calibri Light" size="20.0" />
+            <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="emailField" layoutX="76.0" layoutY="278.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eff6e0;">
+      <TextField fx:id="emailField" layoutX="76.0" layoutY="278.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eeeeee;">
          <font>
-            <Font name="Calibri Light" size="20.0" />
+            <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </TextField>
-      <Label layoutX="79.0" layoutY="360.0" prefHeight="25.0" prefWidth="180.0" text="Izaberite veterinara:" textFill="#124559">
+      <Label layoutX="79.0" layoutY="360.0" prefHeight="29.0" prefWidth="350.0" text="Izaberite veterinara:" textFill="#124559">
          <font>
-            <Font name="Calibri Light" size="20.0" />
+            <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="vetComboBox" layoutX="76.0" layoutY="400.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eff6e0;" />
-      <Label layoutX="493.0" layoutY="360.0" prefHeight="25.0" prefWidth="210.0" text="Izaberite datum pregleda:" textFill="#124559">
+      <ComboBox fx:id="vetComboBox" layoutX="76.0" layoutY="400.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eeeeee;" />
+      <Label layoutX="493.0" layoutY="360.0" prefHeight="29.0" prefWidth="350.0" text="Izaberite datum pregleda:" textFill="#124559">
          <font>
-            <Font name="Calibri Light" size="20.0" />
+            <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <DatePicker fx:id="datePicker" layoutX="493.0" layoutY="400.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eff6e0;" />
-      <Label layoutX="67.0" layoutY="494.0" prefHeight="25.0" prefWidth="280.0" text="Kratak opis sa razlogom posjete:" textFill="#124559">
+      <DatePicker fx:id="datePicker" layoutX="493.0" layoutY="400.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eeeeee;" />
+      <Label layoutX="67.0" layoutY="470.0" prefHeight="29.0" prefWidth="782.0" text="Kratak opis sa razlogom posjete:" textFill="#124559">
          <font>
-            <Font name="Calibri Light" size="20.0" />
+            <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="descriptionField" layoutX="67.0" layoutY="537.0" prefHeight="124.0" prefWidth="782.0" style="-fx-background-color: #eff6e0;">
+      <TextArea fx:id="descriptionField" layoutX="67.0" layoutY="510.0" prefHeight="124.0" prefWidth="782.0" style="-fx-background-color: #eeeeee;">
          <font>
-            <Font name="Calibri Light" size="18.0" />
+            <Font name="Microsoft YaHei Light" size="18.0" />
          </font>
       </TextArea>
-      <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" layoutX="409.0" layoutY="717.0" mnemonicParsing="false" onAction="#submitButtonClicked" style="-fx-background-color: #aec3b0;" text="Zakaži" textAlignment="CENTER" textFill="#124559">
+      <Label layoutX="493.0" layoutY="237.0" prefHeight="29.0" prefWidth="350.0" text="Broj mobilnog telefona:" textFill="#124559">
          <font>
-            <Font name="Calibri Light" size="23.0" />
-         </font>
-      </Button>
-      <Label layoutX="493.0" layoutY="237.0" prefHeight="25.0" prefWidth="80.0" text="Vrsta: " textFill="#124559">
-         <font>
-            <Font name="Calibri Light" size="20.0" />
+            <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="speciesComboBox" layoutX="493.0" layoutY="280.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eff6e0;" />
+      <Label fx:id="bannerLabel" alignment="CENTER" layoutX="67.0" layoutY="649.0" prefHeight="40.0" prefWidth="782.0" text="Niste unijeli sve podatke" textAlignment="CENTER" textFill="#af1010" visible="false">
+         <font>
+            <Font name="Microsoft YaHei Light" size="20.0" />
+         </font>
+      </Label>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="708.0" mnemonicParsing="false" onAction="#submitAppointment" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #1C3E74; -fx-background-radius: 20; -fx-border-color: #1C3E74; -fx-border-radius: 20;" text="Zakaži" textAlignment="CENTER" textFill="#f7f7f7">
+         <font>
+            <Font name="Microsoft YaHei Light" size="25.0" />
+         </font>
+      </Button>
+      <TextField fx:id="phoneNumberField" layoutX="493.0" layoutY="278.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eeeeee;">
+         <font>
+            <Font name="Microsoft YaHei Light" size="20.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

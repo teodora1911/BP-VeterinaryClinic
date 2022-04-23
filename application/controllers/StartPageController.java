@@ -18,12 +18,13 @@ public class StartPageController {
         URL url = getClass().getClassLoader().getResource("application" + File.separator + "fxmlfiles" + File.separator + "MakeAppointmentForm.fxml");
         if(url != null){
             FXMLLoader loader = new FXMLLoader(url);
-            MakeAppointmentFormController contoller = new MakeAppointmentFormController();
-            loader.setController(contoller);
+            MakeAppointmentFormController controller = new MakeAppointmentFormController();
+            loader.setController(controller);
             try{
                 Parent root = loader.load();
                 Stage newStage = new Stage();
                 newStage.setScene(new Scene(root));
+                controller.setStage(newStage);
                 newStage.show();
             } catch(IOException ex){
                 ex.printStackTrace();
