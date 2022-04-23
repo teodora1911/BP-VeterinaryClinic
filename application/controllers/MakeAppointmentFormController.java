@@ -7,7 +7,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class MakeAppointmentController {
+public class MakeAppointmentFormController {
     
     @FXML private TextField nameField;
     @FXML private TextField surnameField;
@@ -23,7 +23,7 @@ public class MakeAppointmentController {
         System.out.println("Submitted!");
     }
 
-    public MakeAppointmentController(){
+    public MakeAppointmentFormController(){
 
     }
 }

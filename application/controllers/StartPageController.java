@@ -9,26 +9,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class StartPageController {
-    
-    @FXML private Button loginButton;
-    @FXML private Button appointmentButton;
-    @FXML private Button pharmacyButton;
 
     @FXML
-    void pharmacyButtonClick(ActionEvent event) {
-        System.out.println("Pharmacy button clicked!");
-    }
-
-    @FXML
-    void appointmentButtonClicked(ActionEvent event) {
+    void makeAppointment(ActionEvent event) {
         URL url = getClass().getClassLoader().getResource("application" + File.separator + "fxmlfiles" + File.separator + "MakeAppointmentForm.fxml");
         if(url != null){
             FXMLLoader loader = new FXMLLoader(url);
-            MakeAppointmentController contoller = new MakeAppointmentController();
+            MakeAppointmentFormController contoller = new MakeAppointmentFormController();
             loader.setController(contoller);
             try{
                 Parent root = loader.load();
@@ -42,12 +32,24 @@ public class StartPageController {
     }
 
     @FXML
-    void loginButtonClicked(ActionEvent event) {
-        System.out.println("Login button clicked!");
+    void login(ActionEvent event){
+        URL url = getClass().getClassLoader().getResource("application" + File.separator + "fxmlfiles" + File.separator + "LoginForm.fxml");
+        if(url != null){
+            FXMLLoader loader = new FXMLLoader(url);
+            LoginFormController contoller = new LoginFormController(stage);
+            loader.setController(contoller);
+            try{
+                Parent root = loader.load();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Pawspiracy");
+                stage.show();
+            } catch(IOException ex){
+                ex.printStackTrace();
+            }
+        }
     }
 
     private Stage stage;
-    private Scene scene;
 
     public StartPageController(Stage stage){
         this.stage = stage;

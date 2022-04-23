@@ -5,29 +5,29 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="367.0" layoutY="71.0" prefHeight="70.0" prefWidth="170.0" text="Prijava" textAlignment="JUSTIFY" textFill="#124559">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="315.0" layoutY="70.0" prefHeight="70.0" prefWidth="170.0" text="Prijava" textAlignment="JUSTIFY" textFill="#af1010">
          <font>
-            <Font name="Calibri Light" size="45.0" />
+            <Font name="Microsoft YaHei Light" size="45.0" />
          </font>
       </Label>
-      <Label layoutX="275.0" layoutY="226.0" prefHeight="30.0" prefWidth="170.0" text="Korisničko ime:" textFill="#124559">
+      <Label layoutX="230.0" layoutY="215.0" prefHeight="30.0" prefWidth="170.0" text="Korisničko ime:" textFill="#1c3e74">
          <font>
-            <Font name="Calibri Light" size="22.0" />
+            <Font name="Microsoft YaHei Light" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="275.0" layoutY="385.0" prefHeight="30.0" prefWidth="170.0" text="Lozinka:" textFill="#124559">
+      <Label layoutX="230.0" layoutY="378.0" prefHeight="30.0" prefWidth="170.0" text="Lozinka:" textFill="#1c3e74">
          <font>
-            <Font name="Calibri Light" size="22.0" />
+            <Font name="Microsoft YaHei Light" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameField" layoutX="275.0" layoutY="276.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eff6e0;">
+      <TextField fx:id="usernameField" layoutX="225.0" layoutY="269.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eeeeee;">
          <font>
             <Font name="Calibri Light" size="22.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordField" layoutX="270.0" layoutY="437.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eff6e0;">
+      <PasswordField fx:id="passwordField" layoutX="225.0" layoutY="432.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eeeeee;">
          <font>
             <Font name="Calibri Light" size="22.0" />
          </font>
@@ -37,12 +37,12 @@
             <Font name="Cambria" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="675.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: #aec3b0;" text="Potvrdi" textAlignment="JUSTIFY" textFill="#01161e">
+      <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" layoutX="325.0" layoutY="673.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #1C3E74; -fx-background-radius: 20; -fx-border-color: #1C3E74; -fx-border-radius: 20;" text="Potvrdi" textAlignment="CENTER" textFill="#f7f7f7">
          <font>
-            <Font name="Calibri Light" size="25.0" />
+            <Font name="Microsoft YaHei Light" size="25.0" />
          </font>
       </Button>
-      <CheckBox fx:id="administratorCheck" layoutX="275.0" layoutY="558.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="350.0" text="Prijavljujem se kao administrator" textAlignment="CENTER" textFill="#124559">
+      <CheckBox fx:id="administratorCheck" layoutX="225.0" layoutY="551.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="350.0" text="Prijavljujem se kao administrator" textAlignment="CENTER" textFill="#1c3e74">
          <font>
             <Font name="Calibri Light" size="17.0" />
          </font>
