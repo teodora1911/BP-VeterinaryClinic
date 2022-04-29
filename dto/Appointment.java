@@ -58,6 +58,8 @@ public class Appointment {
         this.petOwner = petOwner;
     }
 
+    // TODO: Override equals and hashCode methods
+
     @Override
     public String toString(){
         return "[ " + IDAppointment + ", " + petOwner.getName() + ", " + petOwner.getSurname() + ", " + veterinarian.getName() + ", " + veterinarian.getSurname() + date +" ]";
