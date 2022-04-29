@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="315.0" layoutY="25.0" prefHeight="70.0" prefWidth="170.0" text="Prijava" textAlignment="JUSTIFY" textFill="#af1010">
+         <font>
+            <Font name="Franklin Gothic Medium" size="45.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="140.0" prefHeight="42.0" prefWidth="170.0" text="Korisničko ime:" textFill="#1c3e74">
+         <font>
+            <Font name="Microsoft YaHei Light" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="220.0" prefHeight="42.0" prefWidth="170.0" text="Lozinka:" textFill="#1c3e74">
+         <font>
+            <Font name="Microsoft YaHei Light" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usernameField" layoutX="325.0" layoutY="140.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eeeeee;">
+         <font>
+            <Font name="Calibri Light" size="22.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="passwordField" layoutX="325.0" layoutY="220.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #eeeeee;">
+         <font>
+            <Font name="Calibri Light" size="22.0" />
+         </font>
+      </PasswordField>
+      <Label fx:id="bannerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="400.0" prefHeight="50.0" prefWidth="350.0" text="Niste unijeli ispravne kredencijale." textFill="#af1010" visible="false">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" layoutX="325.0" layoutY="490.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 10; -fx-border-color: #1C3E74; -fx-border-radius: 10; -fx-border-width: 2;" text="Potvrdi" textAlignment="CENTER" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium Cond" size="32.0" />
+         </font>
+      </Button>
+      <CheckBox fx:id="administratorCheck" layoutX="240.0" layoutY="325.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="320.0" text="Prijavljujem se kao administrator" textAlignment="CENTER" textFill="#1c3e74">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </CheckBox>
+      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="245.0" layoutY="25.0">
+         <image>
+            <Image url="file:/D:/TEODORA/III/BP/PROJEKTNI%20ZADATAK/pictures/cross.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

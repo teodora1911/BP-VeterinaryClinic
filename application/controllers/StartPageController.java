@@ -15,7 +15,7 @@ public class StartPageController {
 
     @FXML
     void makeAppointment(ActionEvent event) {
-        URL url = getClass().getClassLoader().getResource("application" + File.separator + "fxmlfiles" + File.separator + "MakeAppointmentForm.fxml");
+        URL url = getClass().getClassLoader().getResource("application" + File.separator + "resources" + File.separator + "MakeAppointmentForm.fxml");
         if(url != null){
             FXMLLoader loader = new FXMLLoader(url);
             MakeAppointmentFormController controller = new MakeAppointmentFormController();
@@ -34,7 +34,7 @@ public class StartPageController {
 
     @FXML
     void login(ActionEvent event){
-        URL url = getClass().getClassLoader().getResource("application" + File.separator + "fxmlfiles" + File.separator + "LoginForm.fxml");
+        URL url = getClass().getClassLoader().getResource("application" + File.separator + "resources" + File.separator + "LoginForm.fxml");
         if(url != null){
             FXMLLoader loader = new FXMLLoader(url);
             LoginFormController contoller = new LoginFormController(stage);

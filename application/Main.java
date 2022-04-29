@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
-    public static String DIR = System.getProperty("user.dir") + File.separator + "application" + File.separator + "fxmlfiles" + File.separator;
+    public static String DIR = System.getProperty("user.dir") + File.separator + "application" + File.separator + "resources" + File.separator;
     
     public static void main(String[] args) {
         launch(args);
@@ -22,8 +22,8 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        System.out.println("application/fxmlfiles/StartPageForm.fxml");
-        URL url = getClass().getClassLoader().getResource("application" + File.separator + "fxmlfiles" + File.separator + "StartPage.fxml");
+        //System.out.println("application/fxmlfiles/StartPageForm.fxml");
+        URL url = getClass().getClassLoader().getResource("application" + File.separator + "resources" + File.separator + "StartPage.fxml");
         if(url == null){
             System.out.println("Problem sa URL-om");
             System.exit(-1);

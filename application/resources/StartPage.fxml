@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button alignment="CENTER" layoutX="150.0" layoutY="700.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#makeAppointment" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #F7F7F7; -fx-background-radius: 25; -fx-border-color: af1010; -fx-border-radius: 25; -fx-border-width: 3;" text="Zakaži pregled" textAlignment="CENTER" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="23.0" />
+         </font>
+      </Button>
+      <Button layoutX="500.0" layoutY="700.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-color: af1010; -fx-border-width: 3;" text="Prijava" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="23.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="675.0" fitWidth="800.0">
+         <image>
+            <Image url="file:/D:/TEODORA/III/BP/PROJEKTNI%20ZADATAK/pictures/logo%209.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
