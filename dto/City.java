@@ -3,14 +3,14 @@ package dto;
 public class City {
     
     private Integer IDCity;
-    private String Name;
+    private String name;
     private String ZIPCode;
 
     public City() { }
 
-    public City(Integer IDCity, String Name, String ZIPCode){
+    public City(Integer IDCity, String name, String ZIPCode){
         this.IDCity = IDCity;
-        this.Name = Name;
+        this.name = name;
         this.ZIPCode = ZIPCode;
     }
 
@@ -18,24 +18,24 @@ public class City {
         return ZIPCode;
     }
 
-    public void setZIPCode(String zIPCode) {
-        this.ZIPCode = zIPCode;
+    public void setZIPCode(String ZIPCode) {
+        this.ZIPCode = ZIPCode;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        this.Name = name;
+        this.name = name;
     }
 
     public int getIDCity() {
         return IDCity;
     }
 
-    public void setIDCity(int iDCity) {
-        this.IDCity = iDCity;
+    public void setIDCity(int IDCity) {
+        this.IDCity = IDCity;
     }
 
     @Override
@@ -73,6 +73,6 @@ public class City {
 
     @Override
     public String toString(){
-        return "[" + IDCity + ", " + Name + ", " + ZIPCode + "]";
+        return "[ " + IDCity + ", " + name + ", " + ZIPCode + " ]";
     }
 }

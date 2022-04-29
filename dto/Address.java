@@ -3,47 +3,47 @@ package dto;
 public class Address {
     
     private Integer IDAddress;
-    private String Street;
-    private String Number;
-    private City City;
+    private String street;
+    private String number;
+    private City city;
 
     public Address(Integer IDAddress, String street, String number, City city){
         this.IDAddress = IDAddress;
-        this.Street = street;
-        this.Number = number;
-        this.City = city;
+        this.street = street;
+        this.number = number;
+        this.city = city;
     }
 
     public int getIDAddress() {
         return IDAddress;
     }
 
-    public void setIDAddress(int iDAddress) {
-        this.IDAddress = iDAddress;
+    public void setIDAddress(int IDAddress) {
+        this.IDAddress = IDAddress;
     }
 
     public City getCity() {
-        return this.City;
+        return this.city;
     }
 
     public void setCity(City city) {
-        this.City = city;
+        this.city = city;
     }
 
     public String getNumber() {
-        return Number;
+        return number;
     }
 
     public void setNumber(String number) {
-        this.Number = number;
+        this.number = number;
     }
 
     public String getStreet() {
-        return Street;
+        return street;
     }
 
     public void setStreet(String street) {
-        this.Street = street;
+        this.street = street;
     }
 
     @Override
@@ -81,6 +81,6 @@ public class Address {
 
     @Override
     public String toString(){
-        return "[" + IDAddress + ", " + Street + ", " + Number + ", " + this.City.getName() + "]"; 
+        return "[ " + IDAddress + ", " + street + ", " + number + ", " + city.getName() + " ]"; 
     }
 }

@@ -3,97 +3,97 @@ package dto;
 public class Veterinarian {
     
     private Integer IDVeterinarian;
-    private String Name;
-    private String Surname;
-    private String Email;
-    private String PhoneNumber;
-    private String HomeNumber;
-    private Address HomeAddress;
-    private String Username;
-    private String Password;
+    private String name;
+    private String surname;
+    private String email;
+    private String phoneNumber;
+    private String homeNumber;
+    private Address homeAddress;
+    private String username;
+    private String password;
 
-    public Veterinarian(int IDVeterinarian, String name, String surname, String email, String phoneNumber, String homeNumber, Address homeAddress, String username, String password){
+    public Veterinarian(Integer IDVeterinarian, String name, String surname, String email, String phoneNumber, String homeNumber, Address homeAddress, String username, String password){
         this.IDVeterinarian = IDVeterinarian;
-        this.Name = name;
-        this.Surname = surname;
-        this.Email = email;
-        this.PhoneNumber = phoneNumber;
-        this.HomeNumber = homeNumber;
-        this.HomeAddress = homeAddress;
-        this.Username = username;
-        this.Password = password;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.homeNumber = homeNumber;
+        this.homeAddress = homeAddress;
+        this.username = username;
+        this.password = password;
     }
 
     public Integer getIDVeterinarian() {
         return IDVeterinarian;
     }
 
-    public void setIDVeterinarian(Integer iDVeterinarian) {
-        this.IDVeterinarian = iDVeterinarian;
+    public void setIDVeterinarian(Integer IDVeterinarian) {
+        this.IDVeterinarian = IDVeterinarian;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        this.Password = password;
+        this.password = password;
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        this.Username = username;
+        this.username = username;
     }
 
     public Address getHomeAddress() {
-        return HomeAddress;
+        return homeAddress;
     }
 
     public void setHomeAddress(Address homeAddress) {
-        this.HomeAddress = homeAddress;
+        this.homeAddress = homeAddress;
     }
 
     public String getHomeNumber() {
-        return HomeNumber;
+        return homeNumber;
     }
 
     public void setHomeNumber(String homeNumber) {
-        this.HomeNumber = homeNumber;
+        this.homeNumber = homeNumber;
     }
     
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
     
     public void setPhoneNumber(String phoneNumber) {
-        this.PhoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        this.Email = email;
+        this.email = email;
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        this.Surname = surname;
+        this.surname = surname;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        this.Name = name;
+        this.name = name;
     }
 
     @Override
@@ -131,6 +131,6 @@ public class Veterinarian {
 
     @Override
     public String toString(){
-        return "[" + IDVeterinarian + ", " + Name + ", " + Surname + "]";
+        return "[ " + IDVeterinarian + ", " + name + ", " + surname + " ]";
     }
 }
