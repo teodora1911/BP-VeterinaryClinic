@@ -9,13 +9,16 @@ public class Util {
     
     private Util() { }
 
+    private static ConnectionPool connectionPool = ConnectionPool.getInstance();
+
+    public static Connection getConnection() throws SQLException {
+        Connection connection = connectionPool.checkOut();
+        return connection;
+    }
+
     public static void close(Connection connection){
         if(connection != null){
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            connectionPool.checkIn(connection);
         }
     }
 
@@ -37,5 +40,16 @@ public class Util {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void close(Statement statement, ResultSet resultSet){
+        close(statement);
+        close(resultSet);
+    }
+
+    public static void close(Connection connection, Statement statement, ResultSet resultSet){
+        close(connection);
+        close(statement);
+        close(resultSet);
     }
 }

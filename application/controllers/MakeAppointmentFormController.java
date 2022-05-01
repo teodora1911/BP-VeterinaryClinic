@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -18,6 +23,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -44,7 +50,15 @@ public class MakeAppointmentFormController implements Initializable{
     @FXML
     void submitAppointment(ActionEvent event) {
         try{
-            validate();
+            validateUserData();
+            validateAppointmentParams();
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setContentText("Vaš zahtjev za pregled je usvojen.\nObavijestiti ćemo vas o tačnom terminu pregleda.");
+            alert.setWidth(500);
+            alert.setHeight(100);
+            alert.initStyle(StageStyle.TRANSPARENT);
+            alert.show();
+            stage.close();
         } catch(Exception ex){
             bannerLabel.setText(ex.getMessage());
             bannerLabel.setVisible(true);
@@ -80,13 +94,19 @@ public class MakeAppointmentFormController implements Initializable{
         stage.show();
     }
 
+    HashMap<Integer, String> veterinarians;
+
     @Override
     public void initialize(URL url, ResourceBundle bundle){
-        vetComboBox.getItems().addAll(DAOFactory.getFactory(DAOFactoryType.MySQL).getVeterinarianDAO().getAllVeterinarians());
+        veterinarians = DAOFactory.getFactory(DAOFactoryType.MySQL).getVeterinarianDAO().getAllVeterinarians();
+        List<String> fullNames = new ArrayList<>();
+        for(Map.Entry<Integer, String> entry : veterinarians.entrySet())
+            fullNames.add(entry.getValue());
+        vetComboBox.getItems().addAll(fullNames);
         bannerLabel.setVisible(false);
     }
 
-    private void validate(){
+    private void validateUserData(){
         if(!nameField.getText().isEmpty() && !surnameField.getText().isEmpty()){
             if(emailField.getText().isEmpty() && phoneNumberField.getText().isEmpty()){
                 throw new RuntimeException("Neophodno je da unesete Vaš email ili broj telefona.");
@@ -94,21 +114,25 @@ public class MakeAppointmentFormController implements Initializable{
                 boolean eMatched = !emailField.getText().isEmpty() && emailPattern.matcher(emailField.getText()).matches();
                 boolean pnMatched = !phoneNumberField.getText().isEmpty() && phoneNumberPattern.matcher(phoneNumberField.getText()).matches();
 
-                if(eMatched || pnMatched){
-                    // success
-                    Alert alert = new Alert(AlertType.CONFIRMATION);
-                    alert.setContentText("Zakazali ste pregled.\nVaš veterinar će Vas obavijestiti o tačnom terminu pregleda.");
-                    alert.setWidth(500);
-                    alert.setHeight(100);
-                    alert.initStyle(StageStyle.TRANSPARENT);
-                    alert.show();
-                    stage.close();
-                } else {
+                if(!(eMatched || pnMatched)){
                     throw new RuntimeException("Neophodno je da unesete Vaš email ili broj telefona.");
                 }
             }
         } else {
             throw new RuntimeException("Neophodno je da unesete Vaše ime i prezime.");
+        }
+    }
+
+    private void validateAppointmentParams(){
+        SelectionModel<String> selected = vetComboBox.getSelectionModel();
+        LocalDate date = datePicker.getValue();
+        if(selected != null && date != null){
+            String selectedVeterinarian = selected.getSelectedItem();
+            if(selectedVeterinarian == null || !date.isAfter(LocalDate.now())){
+                throw new RuntimeException("Morate da odaberete veterinara i korektan datum pregleda.");
+            }
+        } else {
+            throw new RuntimeException("Morate da odaberete veterinara i korektan datum pregleda.");
         }
     }
 }

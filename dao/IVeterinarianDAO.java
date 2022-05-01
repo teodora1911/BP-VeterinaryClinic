@@ -1,7 +1,7 @@
 package dao;
 
-import java.util.List;
+import java.util.HashMap;
 
 public interface IVeterinarianDAO {
-    public List<String> getAllVeterinarians();
+    public HashMap<Integer, String> getAllVeterinarians();
 }

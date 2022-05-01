@@ -4,40 +4,38 @@ import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 import dao.IVeterinarianDAO;
 
 public class MySQLVeterinarianDAO implements IVeterinarianDAO {
     
     @Override
-    public List<String> getAllVeterinarians(){
-        List<String> veterinarians = new ArrayList<>();
+    public HashMap<Integer, String> getAllVeterinarians(){
+        HashMap<Integer, String> veterinariansDetails = new HashMap<>();
         
         Connection connection = null;
         CallableStatement statement = null;
         ResultSet resultSet = null;
 
-        final String query = "SELECT * FROM veterinarian";
+        final String query = "SELECT IDVeterinarian, Name, Surname FROM veterinarian";
         try {
-            connection = ConnectionPool.getInstance().checkOut();
+            connection = Util.getConnection();
             statement = connection.prepareCall(query);
             resultSet = statement.executeQuery();
 
             while(resultSet.next()){
-                // 2. Column (Name), 3. Column (Surname)
-                String veterinarian = "dr vet. med. " + resultSet.getString(2) + " " + resultSet.getString(3);
-                veterinarians.add(veterinarian);
+                // 1. Column (ID), 2. Column (Name), 3. Column (Surname)
+                Integer id = resultSet.getInt(1);
+                String details = "dr vet. med. " + resultSet.getString(2) + " " + resultSet.getString(3);
+                veterinariansDetails.put(id, details);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            ConnectionPool.getInstance().checkIn(connection);
-            Util.close(statement);
-            Util.close(resultSet);
+            Util.close(connection, statement, resultSet);
         }
 
-        return veterinarians;
+        return veterinariansDetails;
     }
 }
