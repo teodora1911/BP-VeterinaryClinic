@@ -1,15 +1,9 @@
 package application;
 
 import java.io.File;
-import java.net.URL;
 
 import application.controllers.StartPageController;
-// import application.controllers.LoginPageController;
-// import application.controllers.UserStartPageController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application{
@@ -22,18 +16,8 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        URL url = getClass().getClassLoader().getResource("application" + File.separator + "resources" + File.separator + "StartPage.fxml");
-        if(url == null){
-            System.out.println("Problem sa URL-om");
-            System.exit(-1);
-        }
-        FXMLLoader loader = new FXMLLoader(url);
-        StartPageController controller = new StartPageController(primaryStage);
-        loader.setController(controller);
-
-        Parent root = loader.load();
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setTitle("Pawspiracy");
-        primaryStage.show();
+        StartPageController controller = new StartPageController();
+        System.out.println("Pokretanje aplikacije - START");
+        controller.show();
     }
 }

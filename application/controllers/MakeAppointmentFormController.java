@@ -1,9 +1,19 @@
 package application.controllers;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+import dao.DAOFactory;
+import dao.DAOFactoryType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -14,7 +24,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class MakeAppointmentFormController {
+public class MakeAppointmentFormController implements Initializable{
     
     @FXML private TextField nameField;
     @FXML private TextField surnameField;
@@ -42,16 +52,38 @@ public class MakeAppointmentFormController {
     }
 
     private Stage stage;
+    private static final String RESOURCE = "application" + File.separator + "resources" + File.separator + "MakeAppointmentForm.fxml";
+    private static final String TITLE = "Zakazivanje pregleda";
+
     public MakeAppointmentFormController(){
-        this(null);
+        this.stage = new Stage();
+        try{
+            URL url = getClass().getClassLoader().getResource(RESOURCE);
+            if(url != null){
+                FXMLLoader loader = new FXMLLoader(url);
+                loader.setController(this);
+                stage.setScene(new Scene(loader.load()));
+                stage.setResizable(false);
+                stage.setTitle(TITLE);
+            } else {
+                throw new MalformedURLException();
+            }
+        } catch (MalformedURLException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
-    public MakeAppointmentFormController(Stage stage){
-        this.stage = stage;
+    public void show(){
+        stage.show();
     }
 
-    public void setStage(Stage stage){
-        this.stage = stage;
+    @Override
+    public void initialize(URL url, ResourceBundle bundle){
+        vetComboBox.getItems().addAll(DAOFactory.getFactory(DAOFactoryType.MySQL).getVeterinarianDAO().getAllVeterinarians());
+        bannerLabel.setVisible(false);
     }
 
     private void validate(){

@@ -6,86 +6,86 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="40.0" layoutY="120.0" prefHeight="29.0" prefWidth="375.0" text="Ime:" textFill="#124559">
+      <Label layoutX="25.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="325.0" text="Ime:" textFill="#124559">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="485.0" layoutY="120.0" prefHeight="29.0" prefWidth="375.0" text="Prezime:" textFill="#124559">
+      <Label layoutX="425.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="325.0" text="Prezime:" textFill="#124559">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="40.0" layoutY="230.0" prefHeight="29.0" prefWidth="375.0" text="Email:" textFill="#124559">
+      <Label layoutX="26.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="325.0" text="Email:" textFill="#124559">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="143.0" layoutY="34.0" prefHeight="60.0" prefWidth="240.0" text="Zakažite pregled" textFill="#af1010">
+      <Label alignment="CENTER" layoutX="108.0" layoutY="22.0" prefHeight="50.0" prefWidth="240.0" text="Zakažite pregled" textFill="#af1010">
          <font>
             <Font name="Franklin Gothic Medium" size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="nameField" layoutX="40.0" layoutY="160.0" prefHeight="30.0" prefWidth="375.0" style="-fx-background-color: #eeeeee;">
+      <TextField fx:id="nameField" layoutX="25.0" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="325.0" style="-fx-background-color: #eeeeee;">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="surnameField" layoutX="485.0" layoutY="160.0" prefHeight="30.0" prefWidth="375.0" style="-fx-background-color: #eeeeee;">
+      <TextField fx:id="surnameField" layoutX="425.0" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="325.0" style="-fx-background-color: #eeeeee;">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="emailField" layoutX="40.0" layoutY="270.0" prefHeight="43.0" prefWidth="375.0" style="-fx-background-color: #eeeeee;">
+      <TextField fx:id="emailField" layoutX="25.0" layoutY="240.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="325.0" style="-fx-background-color: #eeeeee;">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </TextField>
-      <Label layoutX="40.0" layoutY="345.0" prefHeight="29.0" prefWidth="375.0" text="Izaberite veterinara:" textFill="#124559">
+      <Label layoutX="25.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="325.0" text="Izaberite veterinara:" textFill="#124559">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="vetComboBox" layoutX="40.0" layoutY="390.0" prefHeight="31.0" prefWidth="375.0" style="-fx-background-color: #eeeeee;" />
-      <Label layoutX="485.0" layoutY="345.0" prefHeight="29.0" prefWidth="375.0" text="Izaberite datum pregleda:" textFill="#124559">
+      <ComboBox fx:id="vetComboBox" layoutX="25.0" layoutY="340.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="325.0" style="-fx-background-color: #eeeeee;" />
+      <Label layoutX="425.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="325.0" text="Izaberite datum pregleda:" textFill="#124559">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <DatePicker fx:id="datePicker" layoutX="485.0" layoutY="390.0" prefHeight="31.0" prefWidth="375.0" style="-fx-background-color: #eeeeee;" />
-      <Label layoutX="40.0" layoutY="470.0" prefHeight="30.0" prefWidth="820.0" text="Kratak opis sa razlogom posjete:" textFill="#124559">
+      <DatePicker fx:id="datePicker" layoutX="425.0" layoutY="340.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="325.0" style="-fx-background-color: #eeeeee;" />
+      <Label layoutX="25.0" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="730.0" text="Kratak opis sa razlogom posjete:" textFill="#124559">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="descriptionField" layoutX="40.0" layoutY="510.0" prefHeight="125.0" prefWidth="820.0" style="-fx-background-color: #eeeeee;">
+      <TextArea fx:id="descriptionField" layoutX="25.0" layoutY="440.0" prefHeight="125.0" prefWidth="730.0" style="-fx-background-color: #eeeeee;">
          <font>
             <Font name="Microsoft YaHei Light" size="18.0" />
          </font>
       </TextArea>
-      <Label layoutX="485.0" layoutY="230.0" prefHeight="29.0" prefWidth="375.0" text="Broj mobilnog telefona:" textFill="#124559">
+      <Label layoutX="425.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="325.0" text="Broj mobilnog telefona:" textFill="#124559">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="bannerLabel" alignment="CENTER" layoutX="40.0" layoutY="649.0" prefHeight="40.0" prefWidth="820.0" text="Niste unijeli sve podatke" textAlignment="CENTER" textFill="#af1010" visible="false">
+      <Label fx:id="bannerLabel" alignment="CENTER" layoutX="25.0" layoutY="580.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="730.0" text="Niste unijeli sve podatke" textAlignment="CENTER" textFill="#af1010" visible="false">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="375.0" layoutY="710.0" mnemonicParsing="false" onAction="#submitAppointment" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 20; -fx-border-color: #af1010; -fx-border-radius: 20; -fx-border-width: 3;" text="Zakaži" textAlignment="CENTER" textFill="#1c3e74">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="325.0" layoutY="625.0" mnemonicParsing="false" onAction="#submitAppointment" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 20; -fx-border-color: #af1010; -fx-border-radius: 20; -fx-border-width: 3;" text="Zakaži" textAlignment="CENTER" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="25.0" />
          </font>
       </Button>
-      <TextField fx:id="phoneNumberField" layoutX="485.0" layoutY="270.0" prefHeight="43.0" prefWidth="375.0" style="-fx-background-color: #eeeeee;">
+      <TextField fx:id="phoneNumberField" layoutX="425.0" layoutY="240.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="325.0" style="-fx-background-color: #eeeeee;">
          <font>
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </TextField>
-      <ImageView fitHeight="85.0" fitWidth="90.0" layoutX="39.0" layoutY="21.0">
+      <ImageView fitHeight="65.0" fitWidth="70.0" layoutX="26.0" layoutY="14.0">
          <image>
             <Image url="file:/D:/TEODORA/III/BP/PROJEKTNI%20ZADATAK/pictures/cross.jpg" />
          </image>
