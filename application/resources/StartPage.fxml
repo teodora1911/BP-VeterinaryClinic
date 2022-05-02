@@ -18,7 +18,7 @@
             <Font name="Franklin Gothic Medium" size="23.0" />
          </font>
       </Button>
-      <ImageView fitHeight="500.0" fitWidth="600.0" layoutX="100.0">
+      <ImageView fitHeight="500.0" fitWidth="550.0" layoutX="125.0">
          <image>
             <Image url="file:/D:/TEODORA/III/BP/PROJEKTNI%20ZADATAK/pictures/logo%209.jpg" />
          </image>

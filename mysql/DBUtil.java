@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Util {
+public class DBUtil {
     
-    private Util() { }
+    private DBUtil() { }
 
     private static ConnectionPool connectionPool = ConnectionPool.getInstance();
 

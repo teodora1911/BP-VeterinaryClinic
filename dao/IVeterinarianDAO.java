@@ -3,5 +3,7 @@ package dao;
 import java.util.HashMap;
 
 public interface IVeterinarianDAO {
-    public HashMap<Integer, String> getAllVeterinarians();
+    // preko indeksa mozda 
+    public HashMap<String, String> getVeterinariansFullName();
+    public Integer getVeterinaianID(String name, String surname);
 }

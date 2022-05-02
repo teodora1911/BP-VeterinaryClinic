@@ -16,6 +16,10 @@ public class PetOwner {
         this.phoneNumber = phoneNumber;
     }
 
+    public PetOwner(String name, String surname, String email, String phoneNumber){
+        this(null, name, surname, email, phoneNumber);
+    }
+
     public Integer getIDPetOwner() {
         return IDPetOwner;
     }
