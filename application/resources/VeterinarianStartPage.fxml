@@ -6,21 +6,21 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button alignment="CENTER" layoutX="150.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#viewExaminationRequests" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Pregledaj zahtjeve za preglede" textAlignment="CENTER" textFill="#1d2a75">
+      <Button fx:id="viewAppointmentsButton" alignment="CENTER" layoutX="150.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Pregledaj zahtjeve za preglede" textAlignment="CENTER" textFill="#1d2a75">
          <font>
-            <Font name="Calibri Light" size="25.0" />
+            <Font name="Calibri Light" size="23.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" layoutX="150.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#viewExaminations" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Zakazani pregledi" textAlignment="CENTER" textFill="#1d2a75">
+      <Button fx:id="viewExaminationsButton" alignment="CENTER" layoutX="150.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Zakazani pregledi" textAlignment="CENTER" textFill="#1d2a75">
          <font>
-            <Font name="Calibri Light" size="25.0" />
+            <Font name="Calibri Light" size="23.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" layoutX="150.0" layoutY="375.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#viewMedicalRecords" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Pregledaj medicinske zapise" textAlignment="CENTER" textFill="#1d2a75">
+      <Button fx:id="viewMedicalRecordsButton" alignment="CENTER" layoutX="150.0" layoutY="375.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Pregledaj medicinske zapise" textAlignment="CENTER" textFill="#1d2a75">
          <font>
-            <Font name="Calibri Light" size="25.0" />
+            <Font name="Calibri Light" size="23.0" />
          </font>
       </Button>
       <Label alignment="CENTER" layoutX="275.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="250.0" text="Dobrodošli" textAlignment="CENTER" textFill="#1d2a75" textOverrun="CENTER_ELLIPSIS">
@@ -38,10 +38,5 @@
             </Lighting>
          </effect>
       </Label>
-      <Button alignment="CENTER" layoutX="160.0" layoutY="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#viewMedicalRecords" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Dodaj tip pregleda" textAlignment="CENTER" textFill="#1d2a75">
-         <font>
-            <Font name="Calibri Light" size="25.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

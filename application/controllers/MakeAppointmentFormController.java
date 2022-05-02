@@ -57,7 +57,7 @@ public class MakeAppointmentFormController extends InitializableController {
                     "Vaš zahtjev nije prihvaćen.\nMolimo Vas pokušajte ponovo.";
             } else {
                // message = "Vaš zahtjev nije prihvaćen.\nMolimo Vas pokušajte ponovo.";
-               message = "Nemoguce je dovabiti ID veterinara";
+               message = "Nemoguce je dohvatiti ID veterinara";
             }
             AppUtil.showAltert(AlertType.INFORMATION, message, ButtonType.OK);
             stage.close();
@@ -68,7 +68,7 @@ public class MakeAppointmentFormController extends InitializableController {
     }
 
     public MakeAppointmentFormController(){
-        super("MakeAppointment", "Zakazivanje pregleda");
+        super("MakeAppointmentForm", "Zakazivanje pregleda");
     }
 
     @Override

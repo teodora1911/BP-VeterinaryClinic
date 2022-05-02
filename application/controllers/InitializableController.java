@@ -19,8 +19,8 @@ public abstract class InitializableController implements Initializable {
     protected String resource;
     protected String title;
 
-    public InitializableController(Stage stage, String filename, String title){
-        this.stage = (stage == null) ? new Stage() : stage;
+    public InitializableController(Stage primaryStage, String filename, String title){
+        this.stage = (primaryStage == null) ? new Stage() : primaryStage;
         this.resource = RESOURCE_DIR + filename + RESOURCE_EXTENSION;
         this.title = title;
 

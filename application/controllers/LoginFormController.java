@@ -27,8 +27,9 @@ public class LoginFormController extends InitializableController {
         String username = usernameField.getText();
         String password = passwordField.getText();
         if(!username.isBlank() && !password.isBlank() &&
-             DAOFactory.getFactory(DAOFactoryType.MySQL).getVeterinarianDAO().authenticateVeterinarian(username, password)){
-            System.out.println("Uspjesna autentifikacija!!!!!!");
+            DAOFactory.getFactory(DAOFactoryType.MySQL).getVeterinarianDAO().authenticateVeterinarian(username, password)){
+            VeterinarianStartPageController controller = new VeterinarianStartPageController(stage);
+            controller.show();
         } else {
             bannerLabel.setVisible(true);
         }
