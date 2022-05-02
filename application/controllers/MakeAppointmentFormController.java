@@ -1,8 +1,5 @@
 package application.controllers;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,9 +15,6 @@ import dao.DAOFactoryType;
 import dto.PetOwner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -29,9 +23,8 @@ import javafx.scene.control.SelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
 
-public class MakeAppointmentFormController implements Initializable{
+public class MakeAppointmentFormController extends InitializableController {
     
     @FXML private TextField nameField;
     @FXML private TextField surnameField;
@@ -66,7 +59,7 @@ public class MakeAppointmentFormController implements Initializable{
                // message = "Vaš zahtjev nije prihvaćen.\nMolimo Vas pokušajte ponovo.";
                message = "Nemoguce je dovabiti ID veterinara";
             }
-            AppUtil.showAltert(AlertType.CONFIRMATION, message, ButtonType.OK);
+            AppUtil.showAltert(AlertType.INFORMATION, message, ButtonType.OK);
             stage.close();
         } catch(Exception ex){
             bannerLabel.setText(ex.getMessage());
@@ -74,33 +67,8 @@ public class MakeAppointmentFormController implements Initializable{
         }
     }
 
-    private Stage stage;
-    private static final String RESOURCE = "application" + File.separator + "resources" + File.separator + "MakeAppointmentForm.fxml";
-    private static final String TITLE = "Zakazivanje pregleda";
-
     public MakeAppointmentFormController(){
-        this.stage = new Stage();
-        try{
-            URL url = getClass().getClassLoader().getResource(RESOURCE);
-            if(url != null){
-                FXMLLoader loader = new FXMLLoader(url);
-                loader.setController(this);
-                stage.setScene(new Scene(loader.load()));
-                stage.setResizable(false);
-                stage.setTitle(TITLE);
-            } else {
-                throw new MalformedURLException();
-            }
-        } catch (MalformedURLException e){
-            e.printStackTrace();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-
-    }
-
-    public void show(){
-        stage.show();
+        super("MakeAppointment", "Zakazivanje pregleda");
     }
 
     @Override
@@ -114,12 +82,12 @@ public class MakeAppointmentFormController implements Initializable{
     }
 
     private PetOwner validateUserData(){
-        if(!nameField.getText().isEmpty() && !surnameField.getText().isEmpty()){
-            if(emailField.getText().isEmpty() && phoneNumberField.getText().isEmpty()){
+        if(!nameField.getText().isBlank() && !surnameField.getText().isBlank()){
+            if(emailField.getText().isBlank() && phoneNumberField.getText().isBlank()){
                 throw new RuntimeException("Neophodno je da unesete Vaš email ili broj telefona.");
             } else {
-                boolean eMatched = !emailField.getText().isEmpty() && emailPattern.matcher(emailField.getText()).matches();
-                boolean pnMatched = !phoneNumberField.getText().isEmpty() && phoneNumberPattern.matcher(phoneNumberField.getText()).matches();
+                boolean eMatched = !emailField.getText().isBlank() && emailPattern.matcher(emailField.getText()).matches();
+                boolean pnMatched = !phoneNumberField.getText().isBlank() && phoneNumberPattern.matcher(phoneNumberField.getText()).matches();
 
                 if(eMatched && pnMatched){
                     return new PetOwner(nameField.getText(), surnameField.getText(), emailField.getText(), phoneNumberField.getText());
