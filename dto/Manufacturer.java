@@ -12,6 +12,14 @@ public class Manufacturer {
         this.description = description;
     }
 
+    public Manufacturer(Integer IDManufacturer, String name){
+        this(IDManufacturer, name, null);
+    }
+
+    public Manufacturer(String name){
+        this(null, name);
+    }
+
     public Integer getIDManufacturer() {
         return IDManufacturer;
     }
@@ -36,5 +44,10 @@ public class Manufacturer {
         this.description = description;
     }
 
-    // TODO: Override equals, hashCode and toString methods
+    // TODO: Override equals and hashCode methods
+
+    @Override
+    public String toString(){
+        return name;
+    }
 }

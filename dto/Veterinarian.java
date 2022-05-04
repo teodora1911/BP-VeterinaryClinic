@@ -24,6 +24,10 @@ public class Veterinarian {
         this.password = password;
     }
 
+    public Veterinarian(Integer id, String name, String surname){
+        this(id, name, surname, null, null, null, null, null, null);
+    }
+
     public Integer getIDVeterinarian() {
         return IDVeterinarian;
     }
@@ -131,6 +135,6 @@ public class Veterinarian {
 
     @Override
     public String toString(){
-        return "[ " + IDVeterinarian + ", " + name + ", " + surname + " ]";
+        return "Dr vet. med. " + name + " " + surname;
     }
 }

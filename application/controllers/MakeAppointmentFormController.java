@@ -2,10 +2,7 @@ package application.controllers;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -13,6 +10,7 @@ import application.AppUtil;
 import dao.DAOFactory;
 import dao.DAOFactoryType;
 import dto.PetOwner;
+import dto.Veterinarian;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ButtonType;
@@ -31,7 +29,7 @@ public class MakeAppointmentFormController extends InitializableController {
     @FXML private TextField emailField;
     @FXML private TextField phoneNumberField;
 
-    @FXML private ComboBox<String> vetComboBox;
+    @FXML private ComboBox<Veterinarian> vetComboBox;
     @FXML private DatePicker datePicker;
 
     @FXML private TextArea descriptionField;
@@ -48,17 +46,10 @@ public class MakeAppointmentFormController extends InitializableController {
             String selectedDate = validateAppointmentParams();
 
             // dodaj novi pregled
-            String[] fullname = vetComboBox.getSelectionModel().getSelectedItem().split(" ");
-            Integer IDVet = DAOFactory.getFactory(DAOFactoryType.MySQL).getVeterinarianDAO().getVeterinaianID(fullname[0], fullname[1]);
-            String message = "";
-            if(IDVet != null){
-                message = (DAOFactory.getFactory(DAOFactoryType.MySQL).getAppointmentDAO().addNewAppointment(customer, IDVet, selectedDate, descriptionField.getText())) ? 
-                    "Vaš zahtjev je prihvaćen.\nBićete obaviješteni o tačnom terminu pregleda." : 
-                    "Vaš zahtjev nije prihvaćen.\nMolimo Vas pokušajte ponovo.";
-            } else {
-               // message = "Vaš zahtjev nije prihvaćen.\nMolimo Vas pokušajte ponovo.";
-               message = "Nemoguce je dohvatiti ID veterinara";
-            }
+            Veterinarian selectedVeterinarian = vetComboBox.getSelectionModel().getSelectedItem();
+            String message = (DAOFactory.getFactory(DAOFactoryType.MySQL).getAppointmentDAO().addNewAppointment(customer, selectedVeterinarian, selectedDate, descriptionField.getText())) ? 
+                            "Vaš zahtjev je prihvaćen.\nBićete obaviješteni o tačnom terminu pregleda." : 
+                            "Vaš zahtjev nije prihvaćen.\nMolimo Vas pokušajte ponovo.";
             AppUtil.showAltert(AlertType.INFORMATION, message, ButtonType.OK);
             stage.close();
         } catch(Exception ex){
@@ -73,14 +64,15 @@ public class MakeAppointmentFormController extends InitializableController {
 
     @Override
     public void initialize(URL url, ResourceBundle bundle){
-        HashMap<String, String> veterinarians = DAOFactory.getFactory(DAOFactoryType.MySQL).getVeterinarianDAO().getVeterinariansFullName();
-        List<String> fullNames = new ArrayList<>();
-        for(Map.Entry<String, String> entry : veterinarians.entrySet())
-            fullNames.add(entry.getKey() + " " + entry.getValue());
-        vetComboBox.getItems().addAll(fullNames);
+        List<Veterinarian> veterinarians = DAOFactory.getFactory(DAOFactoryType.MySQL).getVeterinarianDAO().getVeterinarians();
+        vetComboBox.getItems().addAll(veterinarians);
         bannerLabel.setVisible(false);
     }
 
+    /**
+     * Ako su svi parametri validni onda se pravi novi objekat.
+     * Ako parametri nisu validni, baca se izuzetak.
+     */
     private PetOwner validateUserData(){
         if(!nameField.getText().isBlank() && !surnameField.getText().isBlank()){
             if(emailField.getText().isBlank() && phoneNumberField.getText().isBlank()){
@@ -100,12 +92,15 @@ public class MakeAppointmentFormController extends InitializableController {
         }
     }
 
-    // returns Date in String form
+    /**
+     * Ako su parametri validni, vraca se datum u formi MySQL-a.
+     * Ako parametri nisu validni, baca se izuzetak.
+     */
     private String validateAppointmentParams(){
-        SelectionModel<String> selected = vetComboBox.getSelectionModel();
+        SelectionModel<Veterinarian> selected = vetComboBox.getSelectionModel();
         LocalDate date = datePicker.getValue();
         if(selected != null && date != null){
-            String selectedVeterinarian = selected.getSelectedItem();
+            Veterinarian selectedVeterinarian = selected.getSelectedItem();
             if(selectedVeterinarian == null || !date.isAfter(LocalDate.now())){
                 throw new RuntimeException("Morate da odaberete veterinara i korektan datum pregleda.");
             } else {

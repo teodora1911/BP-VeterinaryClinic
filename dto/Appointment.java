@@ -9,13 +9,15 @@ public class Appointment {
     private Veterinarian veterinarian;
     private Date date;
     private String entryReason;
+    private Boolean scheduled;
 
-    public Appointment(Integer IDAppointment, PetOwner petOwner, Veterinarian veterinarian, Date date, String entryReason){
+    public Appointment(Integer IDAppointment, PetOwner petOwner, Veterinarian veterinarian, Date date, String entryReason, Boolean scheduled){
         this.IDAppointment = IDAppointment;
         this.petOwner = petOwner;
         this.veterinarian = veterinarian;
         this.date = date;
         this.entryReason = entryReason;
+        this.scheduled = scheduled;
     }
 
     public Integer getIDAppointment() {
@@ -56,6 +58,14 @@ public class Appointment {
 
     public void setPetOwner(PetOwner petOwner) {
         this.petOwner = petOwner;
+    }
+
+    public Boolean isScheduled(){
+        return scheduled;
+    }
+
+    public void setScheduled(Boolean scheduled){
+        this.scheduled = scheduled;
     }
 
     // TODO: Override equals and hashCode methods

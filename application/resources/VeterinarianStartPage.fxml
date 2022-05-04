@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -10,22 +11,22 @@
    <children>
       <Button fx:id="viewAppointmentsButton" alignment="CENTER" layoutX="150.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Pregledaj zahtjeve za preglede" textAlignment="CENTER" textFill="#1d2a75">
          <font>
-            <Font name="Calibri Light" size="23.0" />
+            <Font name="Arial" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="viewExaminationsButton" alignment="CENTER" layoutX="150.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Zakazani pregledi" textAlignment="CENTER" textFill="#1d2a75">
+      <Button fx:id="viewExaminationsButton" alignment="CENTER" layoutX="150.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Pregledi" textAlignment="CENTER" textFill="#1d2a75">
          <font>
-            <Font name="Calibri Light" size="23.0" />
+            <Font name="Arial" size="23.0" />
          </font>
       </Button>
       <Button fx:id="viewMedicalRecordsButton" alignment="CENTER" layoutX="150.0" layoutY="375.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Pregledaj medicinske zapise" textAlignment="CENTER" textFill="#1d2a75">
          <font>
-            <Font name="Calibri Light" size="23.0" />
+            <Font name="Arial" size="23.0" />
          </font>
       </Button>
       <Label alignment="CENTER" layoutX="275.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="250.0" text="Dobrodošli" textAlignment="CENTER" textFill="#1d2a75" textOverrun="CENTER_ELLIPSIS">
          <font>
-            <Font name="Lucida Bright" size="40.0" />
+            <Font name="Arial Narrow Bold" size="45.0" />
          </font>
          <effect>
             <Lighting diffuseConstant="1.76" specularConstant="1.51" specularExponent="40.0" surfaceScale="0.27">
@@ -38,5 +39,10 @@
             </Lighting>
          </effect>
       </Label>
+      <ImageView fitHeight="70.0" fitWidth="75.0" layoutX="193.0" layoutY="50.0">
+         <image>
+            <Image url="file:/D:/TEODORA/III/BP/PROJEKTNI%20ZADATAK/PawSpiracy/pictures/logo.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

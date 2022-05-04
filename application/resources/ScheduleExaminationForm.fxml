@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="88.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="250.0" text="Zakazivanje pregleda" textAlignment="CENTER" textFill="#af1010">
+         <font>
+            <Font name="Franklin Gothic Medium" size="23.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="55.0" layoutX="25.0" layoutY="27.0">
+         <image>
+            <Image url="file:/D:/TEODORA/III/BP/PROJEKTNI%20ZADATAK/PawSpiracy/pictures/logo.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="25.0" layoutY="115.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="75.0" text="Datum:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="19.0" />
+         </font>
+      </Label>
+      <DatePicker layoutX="125.0" layoutY="115.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" />
+      <Label layoutX="25.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="75.0" text="Vrijeme:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="19.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="125.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #f7f7f7;" />
+      <Label alignment="CENTER" layoutX="165.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="10.0" text=":" textAlignment="CENTER">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="175.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #f7f7f7;" />
+      <Label layoutX="25.0" layoutY="235.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="75.0" text="Opis:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="19.0" />
+         </font>
+      </Label>
+      <TextField alignment="TOP_LEFT" layoutX="25.0" layoutY="285.0" prefHeight="120.0" prefWidth="650.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #1c3e74;">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font>
+      </TextField>
+      <Button layoutX="306.0" layoutY="431.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="99.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 10; -fx-border-color: #1c3e74; -fx-border-radius: 10; -fx-border-width: 2;" text="Zakaži" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

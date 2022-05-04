@@ -26,6 +26,10 @@ public class Medicine {
         this.expirationDate = expirationDate;
     }
 
+    public Medicine(Integer IDMedicine, String name, Double price, Manufacturer manufacturer, Integer quantity, MedicineType type){
+        this(IDMedicine, name, price, null, manufacturer, quantity, type, null, null);
+    }
+
     public Integer getIDMedicine() {
         return IDMedicine;
     }

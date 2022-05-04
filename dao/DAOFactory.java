@@ -7,6 +7,7 @@ public abstract class DAOFactory {
     // geteri za konkretne DAO fabrike
 	public abstract IVeterinarianDAO getVeterinarianDAO();
 	public abstract IAppointmentDAO getAppointmentDAO();
+	public abstract IMedicineDAO getMedicineDAO();
 
     public static DAOFactory getFactory (DAOFactoryType daoFactoryType) {
 		if(daoFactoryType == DAOFactoryType.MySQL) {

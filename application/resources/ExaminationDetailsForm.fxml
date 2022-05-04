@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="265.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" text="Datum:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="datePicker" layoutX="383.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;" />
+      <Label layoutX="631.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" text="Vrijeme:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="hoursComboBox" layoutX="750.0" layoutY="30.0" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: #f7f7f7;" />
+      <Label alignment="CENTER" layoutX="800.0" layoutY="30.0" prefHeight="40.0" prefWidth="10.0" text=":" textAlignment="CENTER">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="minutesComboBox" layoutX="810.0" layoutY="30.0" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: #f7f7f7;" />
+      <Label layoutX="50.0" layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" text="Opis i preporuke:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="descriptionTextField" alignment="TOP_LEFT" layoutX="50.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="850.0" style="-fx-border-color: #1c3e74; -fx-background-color: #f7f7f7; -fx-background-radius: 10; -fx-border-radius: 10;">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font>
+      </TextField>
+      <Label layoutX="50.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="75.0" text="Adresa:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="addressComboBox" layoutX="350.0" layoutY="300.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7;" />
+      <Label layoutX="570.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="75.0" text="Grad:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cityComboBox" layoutX="660.0" layoutY="300.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7;" />
+      <TabPane fx:id="tabPane" layoutX="50.0" layoutY="360.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="700.0" style="-fx-background-color: white; -fx-border-color: grey;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="servicesTab" style="-fx-font-family: Arial;" text="Izvršene usluge">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7;">
+                     <children>
+                        <TableView fx:id="serviceTable" layoutX="-2.0" prefHeight="260.0" prefWidth="700.0">
+                          <columns>
+                            <TableColumn fx:id="IDServiceColumn" prefWidth="120.0" text="Identifikator" />
+                            <TableColumn fx:id="nameServiceColumn" prefWidth="458.0" text="Naziv" />
+                              <TableColumn fx:id="priceServiceColumn" prefWidth="119.0" text="Cijena" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="spentMedicinesTab" style="-fx-font-family: Arial;" text="Dodatni lijekovi">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="spentMedicineTable" prefHeight="260.0" prefWidth="700.0">
+                          <columns>
+                            <TableColumn fx:id="IDMedicineColumn" prefWidth="100.0" text="Identifikator" />
+                            <TableColumn fx:id="nameMedicineColumn" prefWidth="211.0" text="Naziv" />
+                              <TableColumn fx:id="typeMedicineColumn" prefWidth="101.0" text="Vrsta" />
+                              <TableColumn fx:id="manufacturerColumn" prefWidth="145.0" text="Proizvođač" />
+                              <TableColumn fx:id="spentQuantityColumn" prefWidth="141.0" text="Potrošena količina" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="treatmentsTab" style="-fx-font-family: Arial;" text="Recepti">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="treatmentsTable" prefHeight="260.0" prefWidth="700.0">
+                          <columns>
+                            <TableColumn fx:id="IDTreatmentMedicineColumn" prefWidth="70.0" text="Lijek" />
+                            <TableColumn fx:id="nameTreatmentColumn" prefWidth="120.0" text="Naziv " />
+                              <TableColumn fx:id="doseTreatmentColumn" prefWidth="70.0" text="Doza" />
+                              <TableColumn fx:id="frequencyTreatmentColumn" prefWidth="100.0" text="Učestalost" />
+                              <TableColumn fx:id="startTreatmentColumn" prefWidth="130.0" text="Početak liječenja" />
+                              <TableColumn fx:id="durationTreatmentColumn" text="Trajanje" />
+                              <TableColumn fx:id="instructionsTreatmentColumn" prefWidth="129.0" text="Instrukcije" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <TextField fx:id="addressTextBox" layoutX="141.0" layoutY="300.0" prefHeight="40.0" prefWidth="200.0" promptText="Unesite adresu" style="-fx-background-color: #f7f7f7;">
+         <font>
+            <Font name="Calibri Light" size="18.0" />
+         </font>
+      </TextField>
+      <Button layoutX="775.0" layoutY="360.0" mnemonicParsing="false" onAction="#add" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Dodaj" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="775.0" layoutY="420.0" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Izmijeni" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="775.0" layoutY="480.0" mnemonicParsing="false" onAction="#delete" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Obriši" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="50.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" text="Redni broj:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="examinationIDLabel" alignment="CENTER" layoutX="165.0" layoutY="30.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #f7f7f7;" text="1" textAlignment="CENTER" textFill="#af1010">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="775.0" layoutY="555.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#viewMedicalRecord" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #1c3e74; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2;" text="Medicinski zapis" textFill="#af1010">
+         <font>
+            <Font name="Franklin Gothic Medium" size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="775.0" layoutY="620.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#finalizeExamination" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #1c3e74; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2;" text="Završi" textAlignment="CENTER" textFill="#af1010">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

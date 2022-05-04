@@ -14,6 +14,10 @@ public class Address {
         this.city = city;
     }
 
+    public Address(Integer IDAddress, String street, String number){
+        this(IDAddress, street, number, null);
+    }
+
     public int getIDAddress() {
         return IDAddress;
     }
@@ -81,6 +85,6 @@ public class Address {
 
     @Override
     public String toString(){
-        return "[ " + IDAddress + ", " + street + ", " + number + ", " + city.getName() + " ]"; 
+        return street + " " + number; 
     }
 }

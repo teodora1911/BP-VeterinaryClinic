@@ -10,6 +10,10 @@ public class MedicineType {
         this.type = type;
     }
 
+    public MedicineType(String type){
+        this(null, type);
+    }
+
     public Integer getIDMedicineType() {
         return IDMedicineType;
     }
@@ -26,5 +30,10 @@ public class MedicineType {
         this.type = type;
     }
 
-    // TODO: Override equals, hashCode and toString methods
+    // TODO: Override equals and hashCode methods
+    
+    @Override
+    public String toString(){
+        return type;
+    }
 }

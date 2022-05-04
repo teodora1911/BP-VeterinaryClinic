@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: white;">
+         <children>
+            <ChoiceBox fx:id="medicineTypeChoiceBox" layoutX="25.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 15; -fx-border-color: #1c3e74; -fx-border-radius: 15; -fx-font-family: Arial;" />
+            <Label alignment="CENTER" layoutX="25.0" layoutY="15.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: white;" text="Vrsta lijeka:" textAlignment="CENTER" textFill="#1c3e74">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="250.0" layoutY="15.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: white;" text="Proizvođač:" textAlignment="CENTER" textFill="#1c3e74">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="19.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="manufacturerChoiceBox" layoutX="250.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 15; -fx-border-color: #1c3e74; -fx-border-radius: 15; -fx-font-family: Arial;" />
+            <Button alignment="CENTER" layoutX="650.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchMedicine" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;" text="Traži" textAlignment="CENTER" textFill="#1c3e74">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="addToExaminationButton" alignment="CENTER" layoutX="524.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;" text="Dodaj" textAlignment="CENTER" textFill="#1c3e74">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="table" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0">
+        <columns>
+          <TableColumn fx:id="IDColumn" prefWidth="100.0" text="Identifikator" />
+          <TableColumn fx:id="medicineNameColumn" prefWidth="225.0" text="Naziv" />
+            <TableColumn fx:id="quantityColumn" prefWidth="100.0" text="Količina" />
+            <TableColumn fx:id="priceColumn" prefWidth="120.0" text="Cijena" />
+            <TableColumn fx:id="typeColumn" prefWidth="120.0" text="Vrsta" />
+            <TableColumn fx:id="manufacturerColumn" prefWidth="130.0" text="Proizvođač" />
+        </columns>
+      </TableView>
+   </children>
+</VBox>

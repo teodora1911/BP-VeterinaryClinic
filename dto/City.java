@@ -73,6 +73,6 @@ public class City {
 
     @Override
     public String toString(){
-        return "[ " + IDCity + ", " + name + ", " + ZIPCode + " ]";
+        return name;
     }
 }

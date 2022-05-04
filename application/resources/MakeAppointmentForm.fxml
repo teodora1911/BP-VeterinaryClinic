@@ -75,7 +75,7 @@
             <Font name="Microsoft YaHei Light" size="20.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="325.0" layoutY="625.0" mnemonicParsing="false" onAction="#submitAppointment" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 20; -fx-border-color: #af1010; -fx-border-radius: 20; -fx-border-width: 3;" text="Zakaži" textAlignment="CENTER" textFill="#1c3e74">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="325.0" layoutY="625.0" mnemonicParsing="false" onAction="#submitAppointment" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 20; -fx-border-color: #1c3e74; -fx-border-radius: 20; -fx-border-width: 3;" text="Zakaži" textAlignment="CENTER" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="25.0" />
          </font>

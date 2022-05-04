@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="150.0" prefWidth="800.0" />
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="900.0">
+         <children>
+            <ComboBox fx:id="choicesComboBox" layoutX="150.0" layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #1C3E74; -fx-background-radius: 10; -fx-border-radius: 10;" />
+            <Button layoutX="550.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#choiceSelected" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Kreni" textFill="#af1010">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0">
+         <children>
+            <TableView fx:id="table" prefHeight="450.0" prefWidth="900.0" style="-fx-background-color: #f7f7f7;">
+              <columns>
+                  <TableColumn fx:id="IDColumn" prefWidth="100.0" style="-fx-font-family: Arial;" text="Identifikator" />
+                <TableColumn fx:id="nameColumn" prefWidth="120.0" style="-fx-font-family: Arial;" text="Ime" />
+                  <TableColumn fx:id="surnameColumn" prefWidth="120.0" style="-fx-font-family: Arial;" text="Prezime" />
+                  <TableColumn fx:id="emailColumn" prefWidth="150.0" style="-fx-font-family: Arial;" text="Email" />
+                  <TableColumn fx:id="dateColumn" prefWidth="150.0" style="-fx-font-family: Arial;" text="Datum" />
+                  <TableColumn fx:id="entryReasonColumn" prefWidth="260.0" style="-fx-font-family: Arial;" text="Razlog posjete" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+         <children>
+            <Button fx:id="scheduleExaminationButton" layoutX="100.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Zakaži pregled" textFill="#af1010">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="390.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshView" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Osvježi" textFill="#af1010">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="startPageButton" layoutX="600.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Početna stranica" textFill="#af1010">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </VBox>

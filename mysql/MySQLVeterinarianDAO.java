@@ -6,9 +6,11 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.IVeterinarianDAO;
+import dto.Veterinarian;
 
 public class MySQLVeterinarianDAO implements IVeterinarianDAO {
 
@@ -16,6 +18,8 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
     private PreparedStatement preparedStatement = null;
     private CallableStatement callableStatement = null;
     private ResultSet resultSet = null;
+
+    private static Integer currentVeterinarianID = null;
 
     private void resetAll(){
         connection = null;
@@ -25,21 +29,22 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
     }
     
     @Override
-    public HashMap<String, String> getVeterinariansFullName(){
-        HashMap<String, String> veterinariansDetails = new HashMap<>();
+    public List<Veterinarian> getVeterinarians(){
+        List<Veterinarian> veterinariansDetails = new ArrayList<>();
         resetAll();
 
-        final String query = "SELECT Name, Surname FROM veterinarian";
+        final String query = "SELECT IDVeterinarian, Name, Surname FROM veterinarian";
         try {
             connection = DBUtil.getConnection();
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()){
-                // 1. Column (Name), 2. Column (Surname)
-                String name = resultSet.getString(1);
-                String surname = resultSet.getString(2);
-                veterinariansDetails.put(name, surname);
+                // 1. Column (IDVeterinarian), 2. Column (Name), 3. Column (Surname)\
+                Integer id = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                String surname = resultSet.getString(3);
+                veterinariansDetails.add(new Veterinarian(id, name, surname));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,31 +56,9 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
     }
 
     @Override
-    public Integer getVeterinaianID(String name, String surname){
-        resetAll();
-        String query = "SELECT IDVeterinarian FROM veterinarian v WHERE v.Name=? AND v.Surname=?";
-        try{
-            connection = DBUtil.getConnection();
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, name);
-            preparedStatement.setString(2, surname);
-            resultSet = preparedStatement.executeQuery();
-
-            if(resultSet.next()){
-                return resultSet.getInt(1);
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        } finally {
-            DBUtil.close(connection, preparedStatement, resultSet);
-        }
-        return null;
-    }
-
-    @Override
     public boolean authenticateVeterinarian(String username, String password){
         resetAll();
-        String query = "{CALL veterinarian_authentication(?, ?, ?)}";
+        final String query = "{CALL veterinarian_authentication(?, ?, ?, ?)}";
 
         try{
             connection = DBUtil.getConnection();
@@ -84,12 +67,14 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
             callableStatement.setString(1, username);
             callableStatement.setString(2, password);
             callableStatement.registerOutParameter(3, Types.TINYINT);
+            callableStatement.registerOutParameter(4, Types.INTEGER);
 
             callableStatement.execute();
             if(!callableStatement.getBoolean(3)){
                 System.out.println("Nevalidni korisnicko ime i/ili lozinka.");
                 return false;
             }
+            currentVeterinarianID = callableStatement.getInt(4);
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
@@ -97,5 +82,9 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
         }
 
         return true;
+    }
+
+    public static Integer getCurrentVeterinarianID(){
+        return (currentVeterinarianID == null) ? null : Integer.valueOf(currentVeterinarianID.intValue());
     }
 }
