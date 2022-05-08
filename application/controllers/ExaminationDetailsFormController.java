@@ -2,8 +2,6 @@ package application.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import dto.Address;
 import dto.City;
@@ -31,8 +29,8 @@ public class ExaminationDetailsFormController extends InitializableController {
 
     @FXML private Label examinationIDLabel;
     @FXML private DatePicker datePicker;
-    @FXML private ComboBox<Integer> hoursComboBox;
-    @FXML private ComboBox<Integer> minutesComboBox;
+    @FXML private TextField hoursField;
+    @FXML private TextField minutesField;
     @FXML private TextField descriptionTextField;
     
     @FXML private TextField addressTextBox;
@@ -65,21 +63,20 @@ public class ExaminationDetailsFormController extends InitializableController {
     @FXML private TableColumn<Treatment, Integer> durationTreatmentColumn;
     @FXML private TableColumn<Treatment, String> instructionsTreatmentColumn;
 
-    public Examination currentExamination;
+    public static Examination currentExamination;
     
-    public ExaminationDetailsFormController(Examination examination){
+    public ExaminationDetailsFormController(){
         super("ExaminationDetailsForm", "Detalji pregleda");
-        currentExamination = examination;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle bundle){
         examinationIDLabel.setText(currentExamination.getIDExamination().toString());
         datePicker = new DatePicker(currentExamination.getDate().toLocalDate());
-        hoursComboBox.getItems().setAll(IntStream.range(0, 24).boxed().collect(Collectors.toList()));
-        minutesComboBox.getItems().setAll(IntStream.range(0, 60).filter(e -> e % 5 == 0).boxed().collect(Collectors.toList()));
-        hoursComboBox.setPromptText(String.valueOf(currentExamination.getTime().toLocalTime().getHour()));
-        minutesComboBox.setPromptText(String.valueOf(currentExamination.getTime().toLocalTime().getMinute()));
+        // hoursComboBox.getItems().setAll(IntStream.range(0, 24).boxed().collect(Collectors.toList()));
+        // minutesComboBox.getItems().setAll(IntStream.range(0, 60).filter(e -> e % 5 == 0).boxed().collect(Collectors.toList()));
+        hoursField.setText(String.valueOf(currentExamination.getTime().toLocalTime().getHour()));
+        minutesField.setText(String.valueOf(currentExamination.getTime().toLocalTime().getMinute()));
         descriptionTextField.setText(currentExamination.getDescription());
 
         // SERVICE TABLE SETUP

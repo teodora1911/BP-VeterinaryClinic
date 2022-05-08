@@ -17,15 +17,15 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
     private Connection connection = null;
     private PreparedStatement preparedStatement = null;
     private CallableStatement callableStatement = null;
-    private ResultSet resultSet = null;
+    private ResultSet rs = null;
 
-    private static Integer currentVeterinarianID = null;
+    private static Veterinarian currentVeterinarian = null;
 
     private void resetAll(){
         connection = null;
         preparedStatement = null;
         callableStatement = null;
-        resultSet = null;
+        rs = null;
     }
     
     @Override
@@ -37,19 +37,16 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
         try {
             connection = DBUtil.getConnection();
             preparedStatement = connection.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
+            rs = preparedStatement.executeQuery();
 
-            while(resultSet.next()){
-                // 1. Column (IDVeterinarian), 2. Column (Name), 3. Column (Surname)\
-                Integer id = resultSet.getInt(1);
-                String name = resultSet.getString(2);
-                String surname = resultSet.getString(3);
-                veterinariansDetails.add(new Veterinarian(id, name, surname));
+            while(rs.next()){
+                // 1. Column (IDVeterinarian), 2. Column (Name), 3. Column (Surname)
+                veterinariansDetails.add(new Veterinarian(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBUtil.close(connection, preparedStatement, resultSet);
+            DBUtil.close(connection, preparedStatement, rs);
         }
 
         return veterinariansDetails;
@@ -58,7 +55,7 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
     @Override
     public boolean authenticateVeterinarian(String username, String password){
         resetAll();
-        final String query = "{CALL veterinarian_authentication(?, ?, ?, ?)}";
+        final String query = "{CALL veterinarian_authentication(?, ?, ?, ?, ?, ?)}";
 
         try{
             connection = DBUtil.getConnection();
@@ -68,23 +65,28 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
             callableStatement.setString(2, password);
             callableStatement.registerOutParameter(3, Types.TINYINT);
             callableStatement.registerOutParameter(4, Types.INTEGER);
+            callableStatement.registerOutParameter(5, Types.VARCHAR);
+            callableStatement.registerOutParameter(6, Types.VARCHAR);
 
             callableStatement.execute();
             if(!callableStatement.getBoolean(3)){
                 System.out.println("Nevalidni korisnicko ime i/ili lozinka.");
                 return false;
             }
-            currentVeterinarianID = callableStatement.getInt(4);
+            
+            currentVeterinarian = new Veterinarian(callableStatement.getInt(4), 
+                                                    callableStatement.getString(5), 
+                                                      callableStatement.getString(6));
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
-            DBUtil.close(connection, callableStatement, resultSet);
+            DBUtil.close(connection, callableStatement, rs);
         }
 
         return true;
     }
 
-    public static Integer getCurrentVeterinarianID(){
-        return (currentVeterinarianID == null) ? null : Integer.valueOf(currentVeterinarianID.intValue());
+    public static Veterinarian getCurrentVeterinarian(){
+        return currentVeterinarian;
     }
 }

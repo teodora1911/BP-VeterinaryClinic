@@ -95,6 +95,9 @@ public class PetOwner {
 
     @Override
     public String toString(){
-        return "[ " + IDPetOwner + ", " + name + ", " + surname + " ]";
+        String toReturn = surname + ", " + name;
+        toReturn += (email != null) ? (", " + email) : "";
+        toReturn += (phoneNumber != null) ? (", " + phoneNumber) : "";
+        return toReturn;
     }
 }

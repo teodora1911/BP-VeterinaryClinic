@@ -9,14 +9,27 @@ public class Pet {
     private Date birthdate;
     private Integer estimatedAge;
     private Gender gender;
-    private double weight;
+    private Double weight;
     private PetOwner owner;
+    private Species species;
+    private String healthCondition;
+    private String diagnosis;
     
-    public Pet(Integer IDPet, String name, Gender gender, double weight, PetOwner owner, Species species, String healthCondition, String diagnosis) {
+    public Pet(Integer IDPet, String name, Gender gender, Double weight, PetOwner owner, Species species, String healthCondition, String diagnosis) {
         this(IDPet, name, null, null, gender, weight, owner, species, healthCondition, diagnosis);
     }
 
-    public Pet(Integer IDPet, String name, Date birthdate, Integer estimatedAge, Gender gender, double weight, PetOwner owner, Species species, String healthCondition, String diagnosis) {
+    public Pet(Integer IDPet, String name, Gender gender, PetOwner owner, Species species){
+        this(IDPet, name, gender, null, owner, species, null, null);
+    }
+
+    public Pet(Integer IDPet, String name, PetOwner owner){
+        this.IDPet = IDPet;
+        this.name = name;
+        this.owner = owner;
+    }
+
+    public Pet(Integer IDPet, String name, Date birthdate, Integer estimatedAge, Gender gender, Double weight, PetOwner owner, Species species, String healthCondition, String diagnosis) {
         this.IDPet = IDPet;
         this.name = name;
         this.birthdate = birthdate;
@@ -28,13 +41,7 @@ public class Pet {
         this.healthCondition = healthCondition;
         this.diagnosis = diagnosis;
     }
-
-    private Species species;
-    private String healthCondition;
-    private String diagnosis;
-
     
-
     public Integer getIDPet() {
         return IDPet;
     }
@@ -75,11 +82,11 @@ public class Pet {
         this.owner = owner;
     }
 
-    public double getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
@@ -113,5 +120,10 @@ public class Pet {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString(){
+        return name;
     }
 }

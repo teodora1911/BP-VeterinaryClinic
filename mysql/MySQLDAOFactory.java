@@ -2,7 +2,9 @@ package mysql;
 
 import dao.DAOFactory;
 import dao.IAppointmentDAO;
+import dao.IExaminationDAO;
 import dao.IMedicineDAO;
+import dao.IPetDAO;
 import dao.IVeterinarianDAO;
 
 public class MySQLDAOFactory extends DAOFactory {
@@ -27,5 +29,15 @@ public class MySQLDAOFactory extends DAOFactory {
     @Override
     public IMedicineDAO getMedicineDAO(){
         return new MySQLMedicineDAO();
+    }
+
+    @Override
+    public IExaminationDAO getExaminationDAO(){
+        return new MySQLExaminationDAO();
+    }
+
+    @Override
+    public IPetDAO getPetDAO(){
+        return new MySQLPetDAO();
     }
 }

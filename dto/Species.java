@@ -12,6 +12,10 @@ public class Species {
         this.description = description;
     }
 
+    public Species(String name){
+        this(null, name, null);
+    }
+
     public String getDescription() {
         return description;
     }
@@ -40,6 +44,6 @@ public class Species {
 
     @Override
     public String toString(){
-        return "[ " + IDSpecies + ", " + name + " ]";
+        return name;
     }
 }

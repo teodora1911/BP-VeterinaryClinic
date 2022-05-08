@@ -8,6 +8,8 @@ public abstract class DAOFactory {
 	public abstract IVeterinarianDAO getVeterinarianDAO();
 	public abstract IAppointmentDAO getAppointmentDAO();
 	public abstract IMedicineDAO getMedicineDAO();
+	public abstract IExaminationDAO getExaminationDAO();
+	public abstract IPetDAO getPetDAO();
 
     public static DAOFactory getFactory (DAOFactoryType daoFactoryType) {
 		if(daoFactoryType == DAOFactoryType.MySQL) {

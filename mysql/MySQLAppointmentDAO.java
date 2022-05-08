@@ -9,7 +9,7 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Choice;
+import constants.AppointmentsChoices;
 import dao.IAppointmentDAO;
 import dto.Appointment;
 import dto.PetOwner;
@@ -20,13 +20,13 @@ public class MySQLAppointmentDAO  implements IAppointmentDAO {
     private Connection connection = null;
     private PreparedStatement preparedStatement = null;
     private CallableStatement callableStatement = null;
-    private ResultSet resultSet = null;
+    private ResultSet rs = null;
 
     private void resetAll(){
         connection = null;
         preparedStatement = null;
         callableStatement = null;
-        resultSet = null;
+        rs = null;
     }
 
     @Override
@@ -56,14 +56,14 @@ public class MySQLAppointmentDAO  implements IAppointmentDAO {
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
-            DBUtil.close(connection, preparedStatement, resultSet);
+            DBUtil.close(connection, preparedStatement, rs);
         }
 
         return true;
     }
 
     @Override
-    public List<Appointment> getAppointmentsFromVeterinarian(Integer IDVeterinarian, Choice choice){
+    public List<Appointment> getAppointmentsFrom(Veterinarian veterinarian, AppointmentsChoices choice){
         resetAll();
         List<Appointment> appointments = new ArrayList<>();
         String query;
@@ -82,20 +82,20 @@ public class MySQLAppointmentDAO  implements IAppointmentDAO {
         try{
             connection = DBUtil.getConnection();
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, IDVeterinarian);
-            resultSet = preparedStatement.executeQuery();
+            preparedStatement.setInt(1, (veterinarian != null) ? veterinarian.getIDVeterinarian() : null);
+            rs = preparedStatement.executeQuery();
 
-            while(resultSet.next()){
-                Appointment appointment = new Appointment(resultSet.getInt(1), 
-                                            new PetOwner(resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5)),
-                                            null, resultSet.getDate(6), resultSet.getString(7), resultSet.getBoolean(8));
+            while(rs.next()){
+                Appointment appointment = new Appointment(rs.getInt(1),
+                                            new PetOwner(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)),
+                                            veterinarian, rs.getDate(7), rs.getString(8), rs.getBoolean(9));
                 appointments.add(appointment);
             }
 
         } catch (SQLException e){
             e.printStackTrace();
         } finally{
-            DBUtil.close(connection, preparedStatement, resultSet);
+            DBUtil.close(connection, preparedStatement, rs);
         }
 
         return appointments;

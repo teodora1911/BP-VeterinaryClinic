@@ -3,7 +3,7 @@ package application.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.Choice;
+import constants.AppointmentsChoices;
 import dao.DAOFactory;
 import dao.DAOFactoryType;
 import dto.Appointment;
@@ -24,7 +24,7 @@ import mysql.MySQLVeterinarianDAO;
 
 public class AppointmentsViewController extends InitializableController {
     
-    @FXML private ComboBox<Choice> choicesComboBox;
+    @FXML private ComboBox<AppointmentsChoices> choicesComboBox;
 
     @FXML private TableView<Appointment> table;
     @FXML private TableColumn<Appointment, Integer> IDColumn;
@@ -38,13 +38,12 @@ public class AppointmentsViewController extends InitializableController {
     @FXML private Button scheduleExaminationButton;
 
     public ObservableList<Appointment> items;
-    private Choice lastSelectedChoice = null;
-    private Integer IDVeterinarian = null;
+    private AppointmentsChoices lastSelectedChoice = null;
 
 
     @FXML
     void choiceSelected(ActionEvent event) {
-        Choice selectedChoice = choicesComboBox.getSelectionModel().getSelectedItem();
+        AppointmentsChoices selectedChoice = choicesComboBox.getSelectionModel().getSelectedItem();
         if(selectedChoice != null){
             lastSelectedChoice = selectedChoice;
             refreshView(event);
@@ -56,26 +55,29 @@ public class AppointmentsViewController extends InitializableController {
 
     @FXML
     void refreshView(ActionEvent event) {
-        if(lastSelectedChoice != null) {
+        if(lastSelectedChoice != null && MySQLVeterinarianDAO.getCurrentVeterinarian() != null) {
             items.clear();
             items.addAll(DAOFactory.getFactory(DAOFactoryType.MySQL).getAppointmentDAO().
-                        getAppointmentsFromVeterinarian(IDVeterinarian, lastSelectedChoice));   
+                        getAppointmentsFrom(MySQLVeterinarianDAO.getCurrentVeterinarian(), lastSelectedChoice));   
             table.setItems(items);
         }
     }
 
     public AppointmentsViewController(Stage stage){
         super(stage, "AppointmentsView", "Pregled zathjeva");
-        IDVeterinarian = MySQLVeterinarianDAO.getCurrentVeterinarianID();
         items = FXCollections.observableArrayList();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
-        choicesComboBox.getItems().setAll(Choice.values());
+        choicesComboBox.getItems().setAll(AppointmentsChoices.values());
         startPageButton.setOnAction(e -> new VeterinarianStartPageController(stage).show());
         scheduleExaminationButton.setOnAction(e -> {
-            // TODO:
+            Appointment selectedAppointment = table.getSelectionModel().getSelectedItem();
+            if(selectedAppointment != null){
+                ScheduleExaminationFormController.appointment = selectedAppointment;
+                new ScheduleExaminationFormController().show();
+            }
         });
 
         IDColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Appointment, Integer>, ObservableValue<Integer>>(){

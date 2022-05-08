@@ -7,24 +7,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="265.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" text="Datum:" textFill="#1c3e74">
+      <Label layoutX="297.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="75.0" text="Datum:" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="20.0" />
          </font>
       </Label>
       <DatePicker fx:id="datePicker" layoutX="383.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;" />
-      <Label layoutX="631.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" text="Vrijeme:" textFill="#1c3e74">
+      <Label layoutX="666.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="75.0" text="Vrijeme:" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="hoursComboBox" layoutX="750.0" layoutY="30.0" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: #f7f7f7;" />
       <Label alignment="CENTER" layoutX="800.0" layoutY="30.0" prefHeight="40.0" prefWidth="10.0" text=":" textAlignment="CENTER">
          <font>
             <Font name="Franklin Gothic Medium" size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="minutesComboBox" layoutX="810.0" layoutY="30.0" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: #f7f7f7;" />
       <Label layoutX="50.0" layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" text="Opis i preporuke:" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="20.0" />
@@ -124,7 +122,7 @@
             <Font name="Franklin Gothic Medium" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="examinationIDLabel" alignment="CENTER" layoutX="165.0" layoutY="30.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #f7f7f7;" text="1" textAlignment="CENTER" textFill="#af1010">
+      <Label fx:id="examinationIDLabel" alignment="CENTER" layoutX="159.0" layoutY="30.0" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #f7f7f7;" text="1" textAlignment="CENTER" textFill="#af1010">
          <font>
             <Font name="Franklin Gothic Medium" size="20.0" />
          </font>
@@ -139,5 +137,15 @@
             <Font name="Franklin Gothic Medium" size="20.0" />
          </font>
       </Button>
+      <TextField fx:id="hoursField" alignment="CENTER" layoutX="750.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: #f7f7f7;">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="minutesField" alignment="CENTER" layoutX="810.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: #f7f7f7;">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

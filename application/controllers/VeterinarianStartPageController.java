@@ -19,9 +19,8 @@ public class VeterinarianStartPageController extends InitializableController {
     
     @Override
     public void initialize(URL url, ResourceBundle bundle){
-        // FIXME:
         viewAppointmentsButton.setOnAction(e -> new AppointmentsViewController(stage).show());
-        viewExaminationsButton.setOnAction(e -> System.out.println(""));
+        viewExaminationsButton.setOnAction(e -> new ExaminationViewPageController(stage).show());
         viewMedicalRecordsButton.setOnAction(e -> new MedicineViewPageController(false).show());
     }
 }

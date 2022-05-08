@@ -1,12 +1,12 @@
-package application;
+package constants;
 
-public enum Choice {
+public enum AppointmentsChoices {
     Svi(0),
     Zakazani(1),
     Nezakazani(2);
 
     private int value;
-    private Choice(int value){
+    private AppointmentsChoices(int value){
         this.value = value;
     }
 

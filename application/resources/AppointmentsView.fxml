@@ -8,14 +8,19 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="900.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="900.0" style="-fx-background-color: white;">
          <children>
-            <ComboBox fx:id="choicesComboBox" layoutX="150.0" layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #1C3E74; -fx-background-radius: 10; -fx-border-radius: 10;" />
-            <Button layoutX="550.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#choiceSelected" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Kreni" textFill="#af1010">
+            <ComboBox fx:id="choicesComboBox" layoutX="338.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #1C3E74; -fx-background-radius: 10; -fx-border-radius: 10;" />
+            <Button layoutX="605.0" layoutY="18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#choiceSelected" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Kreni" textFill="#af1010">
                <font>
-                  <Font name="Franklin Gothic Medium" size="20.0" />
+                  <Font name="Franklin Gothic Medium" size="19.0" />
                </font>
             </Button>
+            <Label layoutX="215.0" layoutY="20.0" prefHeight="35.0" prefWidth="80.0" text="Odaberite:" textFill="#1c3e74">
+               <font>
+                  <Font name="Franklin Gothic Medium Cond" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0">
@@ -33,19 +38,19 @@
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
          <children>
-            <Button fx:id="scheduleExaminationButton" layoutX="100.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Zakaži pregled" textFill="#af1010">
+            <Button fx:id="scheduleExaminationButton" layoutX="100.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Zakaži pregled" textFill="#af1010">
                <font>
-                  <Font name="Franklin Gothic Medium" size="20.0" />
+                  <Font name="Franklin Gothic Medium" size="19.0" />
                </font>
             </Button>
-            <Button layoutX="390.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshView" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Osvježi" textFill="#af1010">
+            <Button layoutX="390.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshView" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Osvježi" textFill="#af1010">
                <font>
-                  <Font name="Franklin Gothic Medium" size="20.0" />
+                  <Font name="Franklin Gothic Medium" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="startPageButton" layoutX="600.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Početna stranica" textFill="#af1010">
+            <Button fx:id="startPageButton" layoutX="600.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Početna stranica" textFill="#af1010">
                <font>
-                  <Font name="Franklin Gothic Medium" size="20.0" />
+                  <Font name="Franklin Gothic Medium" size="19.0" />
                </font>
             </Button>
          </children>

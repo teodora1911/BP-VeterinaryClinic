@@ -52,4 +52,8 @@ public class DBUtil {
         close(statement);
         close(resultSet);
     }
+
+    public static String preparePattern(String text) {
+		return text.replace('*', '%').replace('?', '_');
+	}
 }
