@@ -5,33 +5,37 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: white;">
          <children>
-            <ChoiceBox fx:id="medicineTypeChoiceBox" layoutX="25.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 15; -fx-border-color: #1c3e74; -fx-border-radius: 15; -fx-font-family: Arial;" />
-            <Label alignment="CENTER" layoutX="25.0" layoutY="15.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: white;" text="Vrsta lijeka:" textAlignment="CENTER" textFill="#1c3e74">
+            <ChoiceBox fx:id="medicineTypeChoiceBox" layoutX="25.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="175.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 15; -fx-border-color: #1c3e74; -fx-border-radius: 15; -fx-font-family: Arial;" />
+            <Label alignment="CENTER" layoutX="25.0" layoutY="15.0" prefHeight="30.0" prefWidth="175.0" style="-fx-background-color: white;" text="Vrsta lijeka:" textAlignment="CENTER" textFill="#1c3e74">
                <font>
                   <Font name="Franklin Gothic Medium" size="19.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="250.0" layoutY="15.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: white;" text="Proizvođač:" textAlignment="CENTER" textFill="#1c3e74">
+            <Label alignment="CENTER" layoutX="225.0" layoutY="15.0" prefHeight="30.0" prefWidth="175.0" style="-fx-background-color: white;" text="Proizvođač:" textAlignment="CENTER" textFill="#1c3e74">
                <font>
                   <Font name="Franklin Gothic Medium" size="19.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="manufacturerChoiceBox" layoutX="250.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 15; -fx-border-color: #1c3e74; -fx-border-radius: 15; -fx-font-family: Arial;" />
-            <Button alignment="CENTER" layoutX="650.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchMedicine" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;" text="Traži" textAlignment="CENTER" textFill="#1c3e74">
+            <ChoiceBox fx:id="manufacturerChoiceBox" layoutX="225.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="175.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 15; -fx-border-color: #1c3e74; -fx-border-radius: 15; -fx-font-family: Arial;" />
+            <Button alignment="CENTER" layoutX="430.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchMedicine" prefHeight="40.0" prefWidth="85.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;" text="Traži" textAlignment="CENTER" textFill="#1c3e74">
                <font>
                   <Font name="Franklin Gothic Medium" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="addToExaminationButton" alignment="CENTER" layoutX="524.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;" text="Dodaj" textAlignment="CENTER" textFill="#1c3e74">
+            <Button fx:id="addButton" alignment="CENTER" layoutX="669.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="85.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;" text="Dodaj" textAlignment="CENTER" textFill="#1c3e74">
                <font>
                   <Font name="Franklin Gothic Medium" size="20.0" />
                </font>
             </Button>
+            <TextField fx:id="quantityField" alignment="CENTER" layoutX="560.0" layoutY="30.0" prefHeight="40.0" prefWidth="65.0" style="-fx-background-color: #f7f7f7;" text="1">
+               <font>
+                  <Font name="Arial" size="17.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
       <TableView fx:id="table" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0">

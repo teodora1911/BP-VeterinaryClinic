@@ -54,7 +54,7 @@ public class ScheduleExaminationFormController extends InitializableController {
 
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
-        datePicker.setPromptText(appointment.getDate().toString());
+        // datePicker.setPromptText(appointment.getDate().toString());
         descriptionField.setText(appointment.getEntryReason());
         ownerField.setText(appointment.getPetOwner().toString());
 
@@ -91,6 +91,7 @@ public class ScheduleExaminationFormController extends InitializableController {
                 int hours = Integer.parseInt(hoursField.getText());
                 int minutes = Integer.parseInt(minutesField.getText());
                 bannerLabel.setVisible(false);
+                // System.out.println(Date.valueOf(datePicker.getValue()));
                 Examination examination = new Examination(null, MySQLVeterinarianDAO.getCurrentVeterinarian(), petTable.getSelectionModel().getSelectedItem(), 
                                                             Date.valueOf(datePicker.getValue()), Time.valueOf(LocalTime.of(hours, minutes)), 
                                                                 descriptionField.getText(), null, false, appointment);

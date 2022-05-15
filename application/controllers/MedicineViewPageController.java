@@ -3,6 +3,7 @@ package application.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.AppUtil;
 import dao.DAOFactory;
 import dao.DAOFactoryType;
 import dao.IMedicineDAO;
@@ -18,9 +19,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.util.Callback;
 
 public class MedicineViewPageController extends InitializableController {
@@ -28,7 +32,8 @@ public class MedicineViewPageController extends InitializableController {
     @FXML private ChoiceBox<MedicineType> medicineTypeChoiceBox;
     @FXML private ChoiceBox<Manufacturer> manufacturerChoiceBox;
 
-    @FXML private Button addToExaminationButton;
+    @FXML private Button addButton;
+    @FXML private TextField quantityField;
 
     @FXML private TableView<Medicine> table;
     @FXML private TableColumn<Medicine, Integer> IDColumn;
@@ -39,11 +44,11 @@ public class MedicineViewPageController extends InitializableController {
     @FXML private TableColumn<Medicine, String> typeColumn;
 
     public ObservableList<Medicine> items = FXCollections.observableArrayList();
-    public boolean examination;
+    public static boolean add;
+    public static boolean quantity;
 
-    public MedicineViewPageController(boolean examinationSupport) {
+    public MedicineViewPageController() {
         super("MedicineViewPage", "Pregled lijekova");
-        this.examination = examinationSupport;
     }
 
     @FXML
@@ -60,10 +65,26 @@ public class MedicineViewPageController extends InitializableController {
         IMedicineDAO databaseMedicineController = DAOFactory.getFactory(DAOFactoryType.MySQL).getMedicineDAO();
         medicineTypeChoiceBox.getItems().setAll(databaseMedicineController.getMedicineTypes());
         manufacturerChoiceBox.getItems().setAll(databaseMedicineController.getManufacturers());
+        quantityField.setVisible(quantity);
+        addButton.setVisible(add);
+        addButton.setOnAction(e -> {
+           Medicine selected = table.getSelectionModel().getSelectedItem();
+           if(selected != null) {
+               if(quantity) {
+                   try{
+                       int q = Integer.parseInt(quantityField.getText());
+                       if(q < 1) { throw new IllegalArgumentException(); }
 
-        addToExaminationButton.setVisible(examination);
-        addToExaminationButton.setOnAction(e -> {
-           // TODO:
+                       DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().addSpentMedicine(ExaminationDetailsFormController.currentExamination, selected, q);
+                       stage.close();
+                   } catch (Exception exc){
+                       AppUtil.showAltert(AlertType.ERROR, "Unesite korektne vrijednosti.", ButtonType.OK);
+                   }
+               } else {
+                   TreatmentDetailsViewController.selectedMedicine = selected;
+                   stage.close();
+               }
+           }
         });
 
         IDColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Medicine, Integer>, ObservableValue<Integer>>(){

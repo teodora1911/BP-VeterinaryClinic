@@ -14,6 +14,10 @@ public class City {
         this.ZIPCode = ZIPCode;
     }
 
+    public City(Integer IDCity, String name){
+        this(IDCity, name, null);
+    }
+
     public String getZIPCode() {
         return ZIPCode;
     }

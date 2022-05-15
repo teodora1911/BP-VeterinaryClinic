@@ -21,6 +21,6 @@ public class VeterinarianStartPageController extends InitializableController {
     public void initialize(URL url, ResourceBundle bundle){
         viewAppointmentsButton.setOnAction(e -> new AppointmentsViewController(stage).show());
         viewExaminationsButton.setOnAction(e -> new ExaminationViewPageController(stage).show());
-        viewMedicalRecordsButton.setOnAction(e -> new MedicineViewPageController(false).show());
+        viewMedicalRecordsButton.setOnAction(e -> new MedicineViewPageController().show());
     }
 }

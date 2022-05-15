@@ -18,14 +18,14 @@ import dto.Veterinarian;
 public class MySQLAppointmentDAO  implements IAppointmentDAO {
 
     private Connection connection = null;
-    private PreparedStatement preparedStatement = null;
-    private CallableStatement callableStatement = null;
+    private PreparedStatement ps = null;
+    private CallableStatement cs = null;
     private ResultSet rs = null;
 
     private void resetAll(){
         connection = null;
-        preparedStatement = null;
-        callableStatement = null;
+        ps = null;
+        cs = null;
         rs = null;
     }
 
@@ -36,27 +36,27 @@ public class MySQLAppointmentDAO  implements IAppointmentDAO {
 
         try{
             connection = DBUtil.getConnection();
-            callableStatement = connection.prepareCall(query);
+            cs = connection.prepareCall(query);
 
-            callableStatement.setString(1, customer.getName());
-            callableStatement.setString(2, customer.getSurname());
-            callableStatement.setString(3, customer.getEmail());
-            callableStatement.setString(4, customer.getPhoneNumber());
-            callableStatement.setInt(5, veterinarian.getIDVeterinarian());
-            callableStatement.setString(6, date);
-            callableStatement.setString(7, entryReason);
-            callableStatement.registerOutParameter(8, Types.TINYINT);
-            callableStatement.registerOutParameter(9, Types.VARCHAR);
+            cs.setString(1, customer.getName());
+            cs.setString(2, customer.getSurname());
+            cs.setString(3, customer.getEmail());
+            cs.setString(4, customer.getPhoneNumber());
+            cs.setInt(5, veterinarian.getIDVeterinarian());
+            cs.setString(6, date);
+            cs.setString(7, entryReason);
+            cs.registerOutParameter(8, Types.TINYINT);
+            cs.registerOutParameter(9, Types.VARCHAR);
 
-            callableStatement.execute();
-            if(!callableStatement.getBoolean(8)){
-                System.out.println(callableStatement.getString(9));
+            cs.execute();
+            if(!cs.getBoolean(8)){
+                System.out.println(cs.getString(9));
                 return false;
             }
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
-            DBUtil.close(connection, preparedStatement, rs);
+            DBUtil.close(connection, cs, rs);
         }
 
         return true;
@@ -81,9 +81,9 @@ public class MySQLAppointmentDAO  implements IAppointmentDAO {
         
         try{
             connection = DBUtil.getConnection();
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, (veterinarian != null) ? veterinarian.getIDVeterinarian() : null);
-            rs = preparedStatement.executeQuery();
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, (veterinarian != null) ? veterinarian.getIDVeterinarian() : null);
+            rs = ps.executeQuery();
 
             while(rs.next()){
                 Appointment appointment = new Appointment(rs.getInt(1),
@@ -95,7 +95,7 @@ public class MySQLAppointmentDAO  implements IAppointmentDAO {
         } catch (SQLException e){
             e.printStackTrace();
         } finally{
-            DBUtil.close(connection, preparedStatement, rs);
+            DBUtil.close(connection, ps, rs);
         }
 
         return appointments;

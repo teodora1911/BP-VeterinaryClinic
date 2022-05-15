@@ -10,21 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.IVeterinarianDAO;
+import dto.Service;
 import dto.Veterinarian;
 
 public class MySQLVeterinarianDAO implements IVeterinarianDAO {
 
     private Connection connection = null;
-    private PreparedStatement preparedStatement = null;
-    private CallableStatement callableStatement = null;
+    private PreparedStatement ps = null;
+    private CallableStatement cs = null;
     private ResultSet rs = null;
 
     private static Veterinarian currentVeterinarian = null;
 
     private void resetAll(){
         connection = null;
-        preparedStatement = null;
-        callableStatement = null;
+        ps = null;
+        cs = null;
         rs = null;
     }
     
@@ -36,8 +37,8 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
         final String query = "SELECT IDVeterinarian, Name, Surname FROM veterinarian";
         try {
             connection = DBUtil.getConnection();
-            preparedStatement = connection.prepareStatement(query);
-            rs = preparedStatement.executeQuery();
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
 
             while(rs.next()){
                 // 1. Column (IDVeterinarian), 2. Column (Name), 3. Column (Surname)
@@ -46,7 +47,7 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBUtil.close(connection, preparedStatement, rs);
+            DBUtil.close(connection, ps, rs);
         }
 
         return veterinariansDetails;
@@ -59,31 +60,63 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
 
         try{
             connection = DBUtil.getConnection();
-            callableStatement = connection.prepareCall(query);
+            cs = connection.prepareCall(query);
 
-            callableStatement.setString(1, username);
-            callableStatement.setString(2, password);
-            callableStatement.registerOutParameter(3, Types.TINYINT);
-            callableStatement.registerOutParameter(4, Types.INTEGER);
-            callableStatement.registerOutParameter(5, Types.VARCHAR);
-            callableStatement.registerOutParameter(6, Types.VARCHAR);
+            cs.setString(1, username);
+            cs.setString(2, password);
+            cs.registerOutParameter(3, Types.TINYINT);
+            cs.registerOutParameter(4, Types.INTEGER);
+            cs.registerOutParameter(5, Types.VARCHAR);
+            cs.registerOutParameter(6, Types.VARCHAR);
 
-            callableStatement.execute();
-            if(!callableStatement.getBoolean(3)){
+            cs.execute();
+            if(!cs.getBoolean(3)){
                 System.out.println("Nevalidni korisnicko ime i/ili lozinka.");
                 return false;
             }
             
-            currentVeterinarian = new Veterinarian(callableStatement.getInt(4), 
-                                                    callableStatement.getString(5), 
-                                                      callableStatement.getString(6));
+            currentVeterinarian = new Veterinarian(cs.getInt(4), 
+                                                    cs.getString(5), 
+                                                      cs.getString(6));
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
-            DBUtil.close(connection, callableStatement, rs);
+            DBUtil.close(connection, cs, rs);
         }
 
         return true;
+    }
+
+    @Override
+    public List<Service> getServices(){
+        resetAll();
+        List<Service> services = new ArrayList<>();
+        final String query = "SELECT * FROM veterinarian_services_view WHERE IDVeterinarian=?";
+
+        if(currentVeterinarian != null && currentVeterinarian.getIDVeterinarian() != null){
+            try {
+                connection = DBUtil.getConnection();
+                ps = connection.prepareStatement(query);
+                ps.setInt(1, currentVeterinarian.getIDVeterinarian());
+                rs = ps.executeQuery();
+                /*
+                 * 1. IDVeterinarian
+                 * 2. IDService
+                 * 3. ServiceName
+                 * 4. ServiceCost
+                 * 5. ServiceDesc
+                 */
+                while(rs.next()){
+                    Service service = new Service(rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getString(5));
+                    services.add(service);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                DBUtil.close(connection, ps, rs);
+            }
+        }
+        return services;
     }
 
     public static Veterinarian getCurrentVeterinarian(){

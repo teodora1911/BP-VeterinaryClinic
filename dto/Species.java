@@ -40,7 +40,38 @@ public class Species {
         this.IDSpecies = IDSpecies;
     }
 
-    // TODO: Override equals and hashCode methods
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj){
+            return true;
+        }
+        if(obj == null){
+            return false;
+        }
+        if(getClass() != obj.getClass()){
+            return false;
+        }
+
+        Species other = (Species)obj;
+        if(IDSpecies == null){
+            if(other.IDSpecies != null){
+                return false;
+            }
+        } else if(!IDSpecies.equals(other.IDSpecies)){
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode(){
+        final int prime = 97;
+        int result = 1;
+        result = prime * result + ((IDSpecies == null) ? 0 : IDSpecies.hashCode());
+        
+        return result;
+    }
 
     @Override
     public String toString(){

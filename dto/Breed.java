@@ -46,5 +46,8 @@ public class Breed {
         this.species = species;
     }
 
-    // TODO: Override equals, hashCode and toString methods
+    @Override
+    public String toString(){
+        return name;
+    }
 }

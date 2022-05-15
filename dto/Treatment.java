@@ -1,17 +1,21 @@
 package dto;
 
+import java.sql.Date;
+
 public class Treatment {
     
-    private Integer IDmedicine;
+    private Examination examination;
+    private Medicine medicine;
     private String name;
     private Integer dose;
     private String frequency;
-    private String startDate;
+    private Date startDate;
     private Integer duration;
     private String instructions;
 
-    public Treatment(Integer IDmedicine, String name, Integer dose, String frequency, String startDate, Integer duration, String instructions){
-        this.IDmedicine = IDmedicine;
+    public Treatment(Examination examination, Medicine medicine, String name, Integer dose, String frequency, Date startDate, Integer duration, String instructions){
+        this.examination = examination;
+        this.medicine = medicine;
         this.name = name;
         this.dose = dose;
         this.frequency = frequency;
@@ -20,12 +24,20 @@ public class Treatment {
         this.instructions = instructions;
     }
 
-    public Integer getIDMedicine() {
-        return IDmedicine;
+    public Examination getExamination() {
+        return examination;
     }
 
-    public void setMedicine(Integer IDmedicine) {
-        this.IDmedicine = IDmedicine;
+    public void setExamination(Examination examination){
+        this.examination = examination;
+    }
+
+    public Medicine getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
     }
 
 
@@ -46,11 +58,11 @@ public class Treatment {
         this.duration = duration;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 

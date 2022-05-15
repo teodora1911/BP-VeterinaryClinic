@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="table" prefHeight="325.0" prefWidth="600.0" style="-fx-background-color: #f7f7f7;">
+        <columns>
+          <TableColumn fx:id="idColumn" prefWidth="100.0" text="Identifikator" />
+          <TableColumn fx:id="nameColumn" prefWidth="400.0" text="Naziv" />
+            <TableColumn fx:id="priceColumn" prefWidth="100.0" text="Cijena" />
+        </columns>
+      </TableView>
+      <Button fx:id="addButton" layoutX="435.0" layoutY="340.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Dodaj" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="35.0" layoutY="340.0" prefHeight="36.0" prefWidth="163.0" text="Broj izvršenih usluga:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="serviceNumber" alignment="CENTER" layoutX="209.0" layoutY="340.0" prefHeight="36.0" prefWidth="64.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 20; -fx-border-color: #1c3e74; -fx-border-radius: 20;" text="1">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

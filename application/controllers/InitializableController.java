@@ -49,4 +49,6 @@ public abstract class InitializableController implements Initializable {
     public void show(){
         stage.show();
     }
+
+    public void refresh() { }
 }

@@ -61,10 +61,16 @@ public class ExaminationViewPageController extends InitializableController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         choiceComboBox.getItems().setAll(ExaminationChoices.values());
+        choiceComboBox.setOnAction(e -> {
+            lastSelectedChoice = choiceComboBox.getSelectionModel().getSelectedItem();
+        });
         refreshButton.setOnAction(e -> { refresh(); });
         updateExaminationButton.setOnAction(e -> {
-            ExaminationDetailsFormController.currentExamination = table.getSelectionModel().getSelectedItem();
-            new ExaminationDetailsFormController().show();
+            Examination selectedExamination = table.getSelectionModel().getSelectedItem();
+            if(selectedExamination != null && !selectedExamination.isCompleted()){
+                ExaminationDetailsFormController.currentExamination = selectedExamination;
+                new ExaminationDetailsFormController().show();
+            }
         });
         startPageButton.setOnAction(e -> new VeterinarianStartPageController(stage).show());
 
@@ -113,14 +119,15 @@ public class ExaminationViewPageController extends InitializableController {
 
     @FXML
     void search(ActionEvent event) {
-        lastSelectedChoice = choiceComboBox.getSelectionModel().getSelectedItem();
+        // lastSelectedChoice = choiceComboBox.getSelectionModel().getSelectedItem();
         lastSelectedDate = (searchDate.getValue() != null) ? Date.valueOf(searchDate.getValue()) : null;
         lastNameInput = (ownerNameField.getText().isBlank()) ? "*" : "*" + ownerNameField.getText() + "*";
         lastSurnameInput = (ownerNameField.getText().isBlank()) ? "*" : "*" + ownerSurnameField.getText() + "*";
         refresh();
     }
     
-    private void refresh() {
+    @Override
+    public void refresh() {
         items.clear();
         items.addAll(DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().getExaminationsFrom(MySQLVeterinarianDAO.getCurrentVeterinarian(),
                                                                                                          lastSelectedChoice, lastSelectedDate, lastNameInput, lastSurnameInput));

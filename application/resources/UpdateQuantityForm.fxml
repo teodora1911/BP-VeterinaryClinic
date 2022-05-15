@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="mainLabel" alignment="CENTER" layoutX="65.0" layoutY="25.0" prefHeight="65.0" prefWidth="370.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010;" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="quantityField" alignment="CENTER" layoutX="163.0" layoutY="100.0" prefHeight="40.0" prefWidth="175.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #1c3e74;">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="65.0" layoutY="100.0" prefHeight="40.0" prefWidth="85.0" text="Količina:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="addButton" layoutX="361.0" layoutY="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="74.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Dodaj" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="bannerLabel" alignment="CENTER" layoutX="65.0" layoutY="153.0" prefHeight="27.0" prefWidth="370.0" text="Niste unijeli korektne podatke." textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

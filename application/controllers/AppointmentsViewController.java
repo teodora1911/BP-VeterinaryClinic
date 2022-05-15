@@ -40,19 +40,6 @@ public class AppointmentsViewController extends InitializableController {
     public ObservableList<Appointment> items;
     private AppointmentsChoices lastSelectedChoice = null;
 
-
-    @FXML
-    void choiceSelected(ActionEvent event) {
-        AppointmentsChoices selectedChoice = choicesComboBox.getSelectionModel().getSelectedItem();
-        if(selectedChoice != null){
-            lastSelectedChoice = selectedChoice;
-            refreshView(event);
-            // items.addAll(DAOFactory.getFactory(DAOFactoryType.MySQL).
-            //             getAppointmentDAO().getAppointmentsFromVeterinarian(IDVeterinarian, lastSelectedChoice));
-            // table.setItems(items);
-        }
-    }
-
     @FXML
     void refreshView(ActionEvent event) {
         if(lastSelectedChoice != null && MySQLVeterinarianDAO.getCurrentVeterinarian() != null) {
@@ -71,6 +58,13 @@ public class AppointmentsViewController extends InitializableController {
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
         choicesComboBox.getItems().setAll(AppointmentsChoices.values());
+        choicesComboBox.setOnAction(e -> {
+            AppointmentsChoices selectedChoice = choicesComboBox.getSelectionModel().getSelectedItem();
+            if(selectedChoice != null){
+                lastSelectedChoice = selectedChoice;
+                refreshView(e);
+            }
+        });
         startPageButton.setOnAction(e -> new VeterinarianStartPageController(stage).show());
         scheduleExaminationButton.setOnAction(e -> {
             Appointment selectedAppointment = table.getSelectionModel().getSelectedItem();

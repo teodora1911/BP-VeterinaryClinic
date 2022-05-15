@@ -102,5 +102,48 @@ public class Medicine {
         this.expirationDate = expirationDate;
     }
 
-    // TODO: Override equals, hashCode and toString methods
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj){
+            return true;
+        }
+        if(obj == null){
+            return false;
+        }
+        if(getClass() != obj.getClass()){
+            return false;
+        }
+
+        Medicine other = (Medicine)obj;
+        if(IDMedicine == null){
+            if(other.IDMedicine != null){
+                return false;
+            }
+        } else if(!IDMedicine.equals(other.IDMedicine)){
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode(){
+        final int prime = 97;
+        int result = 1;
+        result = prime * result + ((IDMedicine == null) ? 0 : IDMedicine.hashCode());
+        
+        return result;
+    }
+
+    @Override
+    public String toString(){
+        String toReturn = "";
+        if(name != null) {
+            toReturn += name + "\n";
+        }
+        if(type != null && manufacturer != null){
+            toReturn += "[ " + type.getType() + ", " + manufacturer.getName() + " ]";
+        }
+        return toReturn;
+    }
 }

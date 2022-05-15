@@ -1,6 +1,7 @@
 package dto;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
 
 public class Pet {
     
@@ -14,6 +15,7 @@ public class Pet {
     private Species species;
     private String healthCondition;
     private String diagnosis;
+    private List<Breed> breeds;
     
     public Pet(Integer IDPet, String name, Gender gender, Double weight, PetOwner owner, Species species, String healthCondition, String diagnosis) {
         this(IDPet, name, null, null, gender, weight, owner, species, healthCondition, diagnosis);
@@ -120,6 +122,18 @@ public class Pet {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Breed> getBreeds() {
+        return breeds;
+    }
+
+    public void setBreeds(List<Breed> breeds){
+        this.breeds = breeds;
+    }
+
+    public void addBreed(Breed breed){
+        breeds.add(breed);
     }
 
     @Override

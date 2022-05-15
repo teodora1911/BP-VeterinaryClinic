@@ -49,6 +49,4 @@ public class Service {
     public void setIDService(Integer iDService) {
         this.IDService = iDService;
     }
-
-    // TODO: Override equals, hashCode and toString methods
 }

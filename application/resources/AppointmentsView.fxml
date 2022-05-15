@@ -11,11 +11,6 @@
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="900.0" style="-fx-background-color: white;">
          <children>
             <ComboBox fx:id="choicesComboBox" layoutX="338.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #1C3E74; -fx-background-radius: 10; -fx-border-radius: 10;" />
-            <Button layoutX="605.0" layoutY="18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#choiceSelected" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 7; -fx-border-color: #1C3E74; -fx-border-radius: 7; -fx-border-width: 2;" text="Kreni" textFill="#af1010">
-               <font>
-                  <Font name="Franklin Gothic Medium" size="19.0" />
-               </font>
-            </Button>
             <Label layoutX="215.0" layoutY="20.0" prefHeight="35.0" prefWidth="80.0" text="Odaberite:" textFill="#1c3e74">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="18.0" />

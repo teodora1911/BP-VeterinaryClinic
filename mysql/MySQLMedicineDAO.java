@@ -16,14 +16,14 @@ import dto.MedicineType;
 public class MySQLMedicineDAO implements IMedicineDAO {
 
     private Connection connection = null;
-    private PreparedStatement preparedStatement = null;
-    private CallableStatement callableStatement = null;
+    private PreparedStatement ps = null;
+    private CallableStatement cs = null;
     private ResultSet resultSet = null;
 
     private void resetAll(){
         connection = null;
-        preparedStatement = null;
-        callableStatement = null;
+        ps = null;
+        cs = null;
         resultSet = null;
     }
 
@@ -34,17 +34,16 @@ public class MySQLMedicineDAO implements IMedicineDAO {
         final String query = "SELECT * FROM medicinetype";
         try{
             connection = DBUtil.getConnection();
-            preparedStatement = connection.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
+            ps = connection.prepareStatement(query);
+            resultSet = ps.executeQuery();
 
             while(resultSet.next()){
-                // 1. Column (IDMedicineType), 2. Column (Type)
                 types.add(new MedicineType(resultSet.getInt(1), resultSet.getString(2)));
             }
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
-            DBUtil.close(connection, preparedStatement, resultSet);
+            DBUtil.close(connection, ps, resultSet);
         }
 
         return types;
@@ -57,18 +56,16 @@ public class MySQLMedicineDAO implements IMedicineDAO {
         final String query = "SELECT * FROM manufacturer";
         try{
             connection = DBUtil.getConnection();
-            preparedStatement = connection.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
+            ps = connection.prepareStatement(query);
+            resultSet = ps.executeQuery();
 
             while(resultSet.next()){
-                // 1. Column (IDManufacturer), 2. Column (Name), 3. Column(Description)
                 manufacturers.add(new Manufacturer(resultSet.getInt(1), resultSet.getString(2)));
-                // 3. kolona nam za sada ne treba
             }
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
-            DBUtil.close(connection, preparedStatement, resultSet);
+            DBUtil.close(connection, ps, resultSet);
         }
 
         return manufacturers;
@@ -82,23 +79,22 @@ public class MySQLMedicineDAO implements IMedicineDAO {
 
         try{
             connection = DBUtil.getConnection();
-            callableStatement = connection.prepareCall(query);
+            cs = connection.prepareCall(query);
 
-            callableStatement.setInt(1, (manufacturer != null) ? manufacturer.getIDManufacturer() : 0);
-            callableStatement.setInt(2, (type != null) ? type.getIDMedicineType() : 0);
+            cs.setInt(1, (manufacturer != null) ? manufacturer.getIDManufacturer() : 0);
+            cs.setInt(2, (type != null) ? type.getIDMedicineType() : 0);
 
-            resultSet = callableStatement.executeQuery();
+            resultSet = cs.executeQuery();
             while(resultSet.next()){
                 // 1. IDMedicine; 2. Name; 3. Price; 4. Manufacturer; 5. Quantity; 6. MedicineType
                 medicines.add(new Medicine(resultSet.getInt(1), resultSet.getString(2),
                                             resultSet.getDouble(3), new Manufacturer(resultSet.getString(4)),
                                             resultSet.getInt(5), new MedicineType(resultSet.getString(6))));
-                // kolone 7 i 8 za sada ne koristimo
             }
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
-            DBUtil.close(connection, callableStatement, resultSet);
+            DBUtil.close(connection, cs, resultSet);
         }
 
         return medicines;

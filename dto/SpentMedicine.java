@@ -2,12 +2,22 @@ package dto;
 
 public class SpentMedicine {
     
+    private Examination examination;
     private Medicine medicine;
-    private Integer quantity;
+    private int quantity;
 
-    public SpentMedicine(Medicine medicine, Integer quantity){
+    public SpentMedicine(Examination examination, Medicine medicine, int quantity){
+        this.examination = examination;
         this.medicine = medicine;
         this.quantity = quantity;
+    }
+
+    public Examination getExamination(){
+        return examination;
+    }
+
+    public void setExamination(Examination examination) {
+        this.examination = examination;
     }
 
     public Medicine getMedicine(){
@@ -18,11 +28,16 @@ public class SpentMedicine {
         this.medicine = medicine;
     }
 
-    public Integer getQuantity(){
+    public int getQuantity(){
         return quantity;
     }
 
-    public void setQuantity(Integer quantity){
+    public void setQuantity(int quantity){
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString(){
+       return (medicine != null) ? medicine.toString() : "";
     }
 }
