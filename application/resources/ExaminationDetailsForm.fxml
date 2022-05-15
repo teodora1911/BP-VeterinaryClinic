@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: white;">
    <children>
       <Label layoutX="297.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="75.0" text="Datum:" textFill="#1c3e74">
          <font>
@@ -38,7 +38,6 @@
             <Font name="Franklin Gothic Medium" size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="addressComboBox" layoutX="351.0" layoutY="287.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7;" />
       <Label layoutX="570.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="75.0" text="Grad:" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="20.0" />
@@ -97,22 +96,22 @@
             </Tab>
         </tabs>
       </TabPane>
-      <TextField fx:id="addressTextBox" layoutX="141.0" layoutY="287.0" prefHeight="40.0" prefWidth="200.0" promptText="Unesite adresu" style="-fx-background-color: #f7f7f7;">
+      <TextField fx:id="streetTextField" layoutX="141.0" layoutY="287.0" prefHeight="40.0" prefWidth="250.0" promptText="Unesite ulicu" style="-fx-background-color: #f7f7f7;">
          <font>
             <Font name="Calibri Light" size="18.0" />
          </font>
       </TextField>
-      <Button layoutX="775.0" layoutY="340.0" mnemonicParsing="false" onAction="#add" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Dodaj" textFill="#1c3e74">
+      <Button fx:id="addButton" layoutX="775.0" layoutY="340.0" mnemonicParsing="false" onAction="#add" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Dodaj" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="775.0" layoutY="395.0" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Izmijeni" textFill="#1c3e74">
+      <Button fx:id="updateButton" layoutX="775.0" layoutY="395.0" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Izmijeni" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="775.0" layoutY="450.0" mnemonicParsing="false" onAction="#delete" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Obriši" textFill="#1c3e74">
+      <Button fx:id="deleteButton" layoutX="775.0" layoutY="450.0" mnemonicParsing="false" onAction="#delete" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Obriši" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="18.0" />
          </font>
@@ -152,5 +151,10 @@
             <Font name="Franklin Gothic Medium" size="18.0" />
          </font>
       </Button>
+      <TextField fx:id="streetNumberTextField" layoutX="406.0" layoutY="287.0" prefHeight="40.0" prefWidth="110.0" promptText="Unesite broj" style="-fx-background-color: #f7f7f7;">
+         <font>
+            <Font name="Calibri Light" size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

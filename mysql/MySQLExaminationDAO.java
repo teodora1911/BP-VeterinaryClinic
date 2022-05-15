@@ -1,12 +1,15 @@
 package mysql;
 
+import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.sql.Types;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +22,7 @@ import dto.Examination;
 import dto.ExaminationHasService;
 import dto.Medicine;
 import dto.MedicineType;
+import dto.Payment;
 import dto.Pet;
 import dto.PetOwner;
 import dto.Service;
@@ -46,7 +50,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
     public List<City> getCities() {
         resetAll();
         List<City> cities = new ArrayList<>();
-        final String query = "SELECT * FROM city";
+        final String query = "SELECT IDCity, Name, ZIPCode FROM city";
 
         try {
             connection = DBUtil.getConnection();
@@ -54,7 +58,8 @@ public class MySQLExaminationDAO implements IExaminationDAO {
             rs = ps.executeQuery();
 
             while(rs.next()){
-                cities.add(new City(rs.getInt(1), rs.getString(2), rs.getString(3)));
+                City city = new City(rs.getInt(1), rs.getString(2), rs.getString(3));
+                cities.add(city);
             }
 
         } catch (SQLException e) {
@@ -64,36 +69,6 @@ public class MySQLExaminationDAO implements IExaminationDAO {
         }
 
         return cities;
-    }
-
-    @Override
-    public List<Address> getAddresses(City city) {
-        if(city != null){
-            resetAll();
-            List<Address> addresses = new ArrayList<>();
-            final String query = "SELECT * FROM address addr WHERE addr.City=?";
-
-            try {
-                connection = DBUtil.getConnection();
-                ps = connection.prepareStatement(query);
-                ps.setInt(1, city.getIDCity());
-                rs = ps.executeQuery();
-
-                while(rs.next()){
-                    Address address = new Address(rs.getInt(1), rs.getString(2), rs.getString(3));
-                    addresses.add(address);
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                DBUtil.close(connection, ps, rs);
-            }
-
-            return addresses;
-        }
-
-        return null;
     }
 
     @Override
@@ -126,6 +101,41 @@ public class MySQLExaminationDAO implements IExaminationDAO {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean updateExamination(Examination examination) {
+        if(examination != null){
+            resetAll();
+            final String query = "{CALL update_examination(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            try{
+                connection = DBUtil.getConnection();
+                cs = connection.prepareCall(query);
+
+                cs.setInt(1, examination.getIDExamination());
+                cs.setDate(2, examination.getDate());
+                cs.setTime(3, examination.getTime());
+                cs.setString(4, examination.getDescription());
+                cs.setInt(5, examination.getAddress().getCity().getIDCity());
+                cs.setString(6, examination.getAddress().getStreet());
+                cs.setString(7, examination.getAddress().getNumber());
+                cs.setBoolean(8, examination.isCompleted());
+                cs.registerOutParameter(9, Types.TINYINT);
+                cs.execute();
+
+                if(!cs.getBoolean(9)){
+                    AppUtil.showAltert(AlertType.ERROR, "Neuspjesno azuriranje pregleda.", ButtonType.OK);
+                } else {
+                    return true;
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            } finally {
+                DBUtil.close(connection, cs, rs);
+            }
+        }
+
+        return false;
     }
 
     @Override
@@ -337,7 +347,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
     public void updateService(Examination examination, Service service, Integer quantity) {
         if(examination != null && examination.getIDExamination() != null && service != null && service.getIDService() != null && quantity != null) {
             resetAll();
-            final String query = "{CALL add_service_examination(?, ?, ?, ?, ?)}";
+            final String query = "{CALL update_service_examination(?, ?, ?, ?, ?)}";
 
             try{
                 connection = DBUtil.getConnection();
@@ -364,18 +374,18 @@ public class MySQLExaminationDAO implements IExaminationDAO {
     public void deleteService(Examination examination, Service service) {
         if(examination != null && examination.getIDExamination() != null && service != null && service.getIDService() != null) {
             resetAll();
-            final String query = "{CALL delete_service_examination(?, ?)}";
+            final String query = "DELETE FROM examinationhasservice WHERE Examination=? AND Service=?";
 
             try {
                 connection = DBUtil.getConnection();
-                cs = connection.prepareCall(query);
-                cs.setInt(1, examination.getIDExamination());
-                cs.setInt(2, service.getIDService());
-                cs.execute();
+                ps = connection.prepareStatement(query);
+                ps.setInt(1, examination.getIDExamination());
+                ps.setInt(2, service.getIDService());
+                ps.execute();
             } catch (SQLException e) {
                e.printStackTrace();
             } finally {
-                DBUtil.close(connection, cs, rs);
+                DBUtil.close(connection, ps, rs);
             }
         }
     }
@@ -483,8 +493,6 @@ public class MySQLExaminationDAO implements IExaminationDAO {
             } finally {
                 DBUtil.close(connection, cs, rs);
             }
-        } else {
-            System.out.println("OOOOOOO");
         }
     }
 
@@ -528,6 +536,78 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                 e.printStackTrace();
             } finally {
                 DBUtil.close(connection, ps, rs);
+            }
+        }
+    }
+
+    @Override
+    public BigDecimal getTotalCost(Examination examination){
+        if(examination != null && examination.getIDExamination() != null) {
+            resetAll();
+            final String query = "{CALL total_cost_examination(?, ?)}";
+            try{
+                connection = DBUtil.getConnection();
+                cs = connection.prepareCall(query);
+                cs.setInt(1, examination.getIDExamination());
+                cs.registerOutParameter(2, Types.DECIMAL);
+                cs.execute();
+
+                return cs.getBigDecimal(2);
+            } catch (SQLException e){
+                e.printStackTrace();
+            } finally {
+                DBUtil.close(connection, cs, rs);
+            }
+        }
+
+        return BigDecimal.valueOf(Double.NEGATIVE_INFINITY);
+    }
+
+    @Override
+    public List<Payment> getPayments(){
+        resetAll();
+        List<Payment> payments = new ArrayList<>();
+        final String query = "SELECT * FROM payment";
+        try{
+            connection = DBUtil.getConnection();
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Payment payment = new Payment(rs.getInt(1), rs.getString(2));
+                payments.add(payment);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, ps, rs);
+        }
+
+        return payments;
+    }
+
+    @Override
+    public void createBill(BigDecimal charge, LocalDateTime timestamp, Payment payment, Examination examination){
+        if(examination != null){
+            resetAll();
+            final String query = "{CALL add_examination_bill(?, ?, ?, ?, ?, ?)}";
+            try{
+                connection = DBUtil.getConnection();
+                cs = connection.prepareCall(query);
+                cs.setBigDecimal(1, charge);
+                cs.setTimestamp(2, Timestamp.valueOf(timestamp));
+                cs.setInt(3, payment.getIDPayment());
+                cs.setInt(4, examination.getIDExamination());
+                cs.setInt(5, examination.getPet().getOwner().getIDPetOwner());
+                cs.registerOutParameter(6, Types.TINYINT);
+                cs.execute();
+
+                if(!cs.getBoolean(6)){
+                    AppUtil.showAltert(AlertType.ERROR, "Racun nije izdat.", ButtonType.OK);
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            } finally {
+                DBUtil.close(connection, cs, rs);
             }
         }
     }

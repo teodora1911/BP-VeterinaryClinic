@@ -6,8 +6,6 @@ public class City {
     private String name;
     private String ZIPCode;
 
-    public City() { }
-
     public City(Integer IDCity, String name, String ZIPCode){
         this.IDCity = IDCity;
         this.name = name;

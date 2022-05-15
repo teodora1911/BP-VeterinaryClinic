@@ -18,11 +18,15 @@ public class Address {
         this(IDAddress, street, number, null);
     }
 
-    public int getIDAddress() {
+    public Address(String street, String number, City city) {
+        this(null, street, number, city);
+    }
+
+    public Integer getIDAddress() {
         return IDAddress;
     }
 
-    public void setIDAddress(int IDAddress) {
+    public void setIDAddress(Integer IDAddress) {
         this.IDAddress = IDAddress;
     }
 

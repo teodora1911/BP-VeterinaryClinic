@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="169.0" layoutY="14.0" prefHeight="60.0" prefWidth="150.0" text="Račun" textAlignment="CENTER" textFill="#af1010">
+         <font>
+            <Font name="Franklin Gothic Medium" size="30.0" />
+         </font>
+      </Label>
+      <Line endX="240.0" fill="#1c3e74" layoutX="233.0" layoutY="75.0" startX="-200.0" stroke="#1c3e74" />
+      <Label layoutX="33.0" layoutY="121.0" prefHeight="50.0" prefWidth="150.0" text="Ukupno:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalCostField" alignment="CENTER" layoutX="190.0" layoutY="121.0" prefHeight="50.0" prefWidth="247.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 20; -fx-border-color: #af1010; -fx-border-radius: 20;" textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="200.0" prefHeight="50.0" prefWidth="150.0" text="Način plaćanja:" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="payment" layoutX="187.0" layoutY="205.0" prefHeight="40.0" prefWidth="247.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 20; -fx-border-color: #af1010; -fx-border-radius: 20;" />
+      <Button fx:id="submitButton" layoutX="127.0" layoutY="319.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 15; -fx-border-color: #af1010; -fx-border-radius: 15;" text="Izdaj" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="quitButton" layoutX="337.0" layoutY="319.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 15; -fx-border-color: #1c3e74; -fx-border-radius: 15;" text="Odustani" textFill="#1c3e74">
+         <font>
+            <Font name="Franklin Gothic Medium" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -67,7 +67,7 @@ public class ExaminationViewPageController extends InitializableController {
         refreshButton.setOnAction(e -> { refresh(); });
         updateExaminationButton.setOnAction(e -> {
             Examination selectedExamination = table.getSelectionModel().getSelectedItem();
-            if(selectedExamination != null && !selectedExamination.isCompleted()){
+            if(selectedExamination != null){
                 ExaminationDetailsFormController.currentExamination = selectedExamination;
                 new ExaminationDetailsFormController().show();
             }

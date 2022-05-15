@@ -2,6 +2,7 @@ package application.controllers;
 
 import java.net.URL;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.ResourceBundle;
 
 import dao.DAOFactory;
@@ -42,9 +43,12 @@ public class ExaminationDetailsFormController extends InitializableController {
     @FXML private TextField minutesField;
     @FXML private TextField descriptionTextField;
     
-    @FXML private TextField addressTextBox;
-    @FXML private ComboBox<Address> addressComboBox;
+    @FXML private TextField streetTextField;
+    @FXML private TextField streetNumberTextField;
     @FXML private ComboBox<City> cityComboBox;
+    @FXML private Button addButton;
+    @FXML private Button updateButton;
+    @FXML private Button deleteButton;
     @FXML private Button refreshButton;
 
     @FXML private TabPane tabPane;
@@ -74,13 +78,10 @@ public class ExaminationDetailsFormController extends InitializableController {
     @FXML private TableColumn<Treatment, Integer> durationTreatmentColumn;
 
     public static Examination currentExamination;
-    private City lastSelectedCity = null;
 
     public ObservableList<ExaminationHasService> services;
     public ObservableList<SpentMedicine> spentMedicines;
     public ObservableList<Treatment> treatments;
-
-    //private Tab lastSelectedTab = servicesTab;
     
     public ExaminationDetailsFormController(){
         super("ExaminationDetailsForm", "Detalji pregleda");
@@ -89,23 +90,18 @@ public class ExaminationDetailsFormController extends InitializableController {
     @Override
     public void initialize(URL url, ResourceBundle bundle){
         examinationIDLabel.setText(currentExamination.getIDExamination().toString());
-        datePicker.setPromptText(currentExamination.getDate().toLocalDate().toString());
+        datePicker.setValue(currentExamination.getDate().toLocalDate());
+        //datePicker.setPromptText(currentExamination.getDate().toLocalDate().toString());
         hoursField.setText(String.valueOf(currentExamination.getTime().toLocalTime().getHour()));
         minutesField.setText(String.valueOf(currentExamination.getTime().toLocalTime().getMinute()));
         descriptionTextField.setText(currentExamination.getDescription());
         refreshButton.setOnAction(e -> refresh());
-
         cityComboBox.getItems().addAll(DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().getCities());
         if(currentExamination.getAddress() != null) {
+            streetTextField.setText(currentExamination.getAddress().getStreet());
+            streetNumberTextField.setText(currentExamination.getAddress().getNumber());
             cityComboBox.getSelectionModel().select(currentExamination.getAddress().getCity());
-            lastSelectedCity = currentExamination.getAddress().getCity();
-            addressComboBox.getItems().setAll(DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().getAddresses(lastSelectedCity));
-            addressComboBox.getSelectionModel().select(currentExamination.getAddress());
         }
-        cityComboBox.setOnAction(e -> {
-             lastSelectedCity = cityComboBox.getSelectionModel().getSelectedItem(); 
-             addressComboBox.getItems().addAll(DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().getAddresses(lastSelectedCity));
-        });
 
         // SERVICE TABLE SETUP
         IDServiceColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ExaminationHasService, Integer>, ObservableValue<Integer>>(){
@@ -216,6 +212,20 @@ public class ExaminationDetailsFormController extends InitializableController {
         spentMedicineTable.setItems(spentMedicines);
         treatments.addAll(DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().getTreatmentsFrom(currentExamination));
         treatmentsTable.setItems(treatments);
+
+        if(currentExamination.isCompleted()){
+            datePicker.setEditable(false);
+            hoursField.setEditable(false);
+            minutesField.setEditable(false);
+            descriptionTextField.setEditable(false);
+            cityComboBox.setEditable(false);
+            streetTextField.setEditable(false);
+            streetNumberTextField.setEditable(false);
+            addButton.setDisable(true);
+            updateButton.setDisable(true);
+            deleteButton.setDisable(true);
+            refreshButton.setDisable(true);
+        }
     }
 
     @FXML
@@ -288,8 +298,36 @@ public class ExaminationDetailsFormController extends InitializableController {
 
     @FXML
     void finalizeExamination(ActionEvent event) {
-        if(addressComboBox.getSelectionModel().getSelectedItem() == null){
-            // pozovi da napravi adresu
+        if(!currentExamination.isCompleted()){
+            City selectedCity = cityComboBox.getSelectionModel().getSelectedItem();
+
+            if(selectedCity != null) {
+                Address selectedAddress = new Address(streetTextField.getText(), streetNumberTextField.getText(), selectedCity);
+                currentExamination.setAddress(selectedAddress);
+                if(datePicker.getValue() != null){
+                    currentExamination.setDate(Date.valueOf(datePicker.getValue()));
+                }
+
+                try{
+                    int hours = Integer.parseInt(hoursField.getText());
+                    int minutes = Integer.parseInt(minutesField.getText());
+                    if(hours < 0 || hours > 23 || minutes < 0 || minutes > 59){
+                        throw new IllegalArgumentException();
+                    }
+                    
+                    String timeStr = String.valueOf(hours) + ":" + String.valueOf(minutes) + ":00";
+                    currentExamination.setTime(Time.valueOf(timeStr));
+
+                    currentExamination.setDescription(descriptionTextField.getText());
+                    currentExamination.setCompleted(true);
+                    if(DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().updateExamination(currentExamination)){
+                        ExaminationBillFormController.examination = currentExamination;
+                        new ExaminationBillFormController(stage).show();
+                    }
+                } catch (Exception e){
+                   System.out.println("Greska!");
+                }
+            }
         }
     }
 
