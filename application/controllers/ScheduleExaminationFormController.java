@@ -54,7 +54,7 @@ public class ScheduleExaminationFormController extends InitializableController {
 
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
-        // datePicker.setPromptText(appointment.getDate().toString());
+        datePicker.setValue(appointment.getDate().toLocalDate());
         descriptionField.setText(appointment.getEntryReason());
         ownerField.setText(appointment.getPetOwner().toString());
 
