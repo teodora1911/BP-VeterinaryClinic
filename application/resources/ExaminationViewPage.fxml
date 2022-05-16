@@ -7,30 +7,29 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="table" prefHeight="500.0" prefWidth="550.0">
+      <TableView fx:id="table" prefHeight="429.0" prefWidth="566.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="100.0" text="Identifikator" />
           <TableColumn fx:id="petColumn" prefWidth="125.0" text="Pacijent" />
             <TableColumn fx:id="ownerColumn" prefWidth="100.0" text="Vlasnik" />
             <TableColumn fx:id="dateColumn" prefWidth="85.0" text="Datum" />
             <TableColumn fx:id="timeColumn" prefWidth="85.0" text="Vrijeme" />
-            <TableColumn fx:id="stateColumn" prefWidth="55.0" text="Stanje" />
+            <TableColumn fx:id="stateColumn" prefWidth="62.0" text="Završen" />
         </columns>
       </TableView>
       <AnchorPane prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: white;">
          <children>
-            <ChoiceBox fx:id="choiceComboBox" layoutX="25.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 15; -fx-border-color: #1c3e74; -fx-border-radius: 15; -fx-font-family: Arial;" />
-            <Button alignment="CENTER" layoutX="25.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#search" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;" text="Traži" textAlignment="CENTER" textFill="#1c3e74">
+            <Button alignment="CENTER" layoutX="25.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#search" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25;" text="Traži" textAlignment="CENTER" textFill="#1c3e74">
                <font>
                   <Font name="Franklin Gothic Medium" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="updateExaminationButton" alignment="CENTER" layoutX="50.0" layoutY="344.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;" text="Vidi detalje" textAlignment="CENTER" textFill="#1c3e74">
+            <Button fx:id="updateExaminationButton" alignment="CENTER" layoutX="50.0" layoutY="344.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25;" text="Vidi detalje" textAlignment="CENTER" textFill="#1c3e74">
                <font>
                   <Font name="Franklin Gothic Medium" size="18.0" />
                </font>
             </Button>
-            <DatePicker fx:id="searchDate" layoutX="25.0" layoutY="81.0" prefHeight="31.0" prefWidth="200.0" promptText="Datum pretrage" />
+            <DatePicker fx:id="searchDate" layoutX="21.0" layoutY="80.0" prefHeight="31.0" prefWidth="200.0" promptText="Datum pretrage" />
             <TextField fx:id="ownerNameField" layoutX="25.0" layoutY="144.0" prefHeight="40.0" prefWidth="200.0" promptText="Ime vlasnika" style="-fx-background-color: #f7f7f7;">
                <font>
                   <Font name="Franklin Gothic Medium" size="17.0" />
@@ -41,16 +40,17 @@
                   <Font name="Franklin Gothic Medium" size="17.0" />
                </font>
             </TextField>
-            <Button fx:id="refreshButton" alignment="CENTER" layoutX="145.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;" text="Osvježi" textAlignment="CENTER" textFill="#1c3e74">
+            <Button fx:id="refreshButton" alignment="CENTER" layoutX="145.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25;" text="Osvježi" textAlignment="CENTER" textFill="#1c3e74">
                <font>
                   <Font name="Franklin Gothic Medium" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="startPageButton" alignment="CENTER" layoutX="50.0" layoutY="435.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 2;" text="Početna stranica" textAlignment="CENTER" textFill="#1c3e74">
+            <Button fx:id="startPageButton" alignment="CENTER" layoutX="50.0" layoutY="435.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #af1010; -fx-background-radius: 25; -fx-border-radius: 25;" text="Početna stranica" textAlignment="CENTER" textFill="#1c3e74">
                <font>
                   <Font name="Franklin Gothic Medium" size="15.0" />
                </font>
             </Button>
+            <ChoiceBox fx:id="choiceComboBox" layoutX="21.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 15; -fx-border-color: #1c3e74; -fx-border-radius: 15; -fx-font-family: Arial;" />
          </children>
       </AnchorPane>
    </children>

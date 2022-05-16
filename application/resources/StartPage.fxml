@@ -8,12 +8,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="makeAppointmentButton" alignment="CENTER" layoutX="150.0" layoutY="515.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #F7F7F7; -fx-background-radius: 25; -fx-border-color: af1010; -fx-border-radius: 25; -fx-border-width: 3;" text="Zakaži pregled" textAlignment="CENTER" textFill="#1c3e74">
+      <Button fx:id="makeAppointmentButton" alignment="CENTER" layoutX="157.0" layoutY="515.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #F7F7F7; -fx-background-radius: 25; -fx-border-color: af1010; -fx-border-radius: 25; -fx-border-width: 2;" text="Zakaži pregled" textAlignment="CENTER" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="loginButton" layoutX="500.0" layoutY="515.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-color: af1010; -fx-border-width: 3;" text="Prijava" textFill="#1c3e74">
+      <Button fx:id="loginButton" layoutX="439.0" layoutY="515.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-color: af1010; -fx-border-width: 2;" text="Prijava" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="23.0" />
          </font>

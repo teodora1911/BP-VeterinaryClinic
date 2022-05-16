@@ -8,7 +8,6 @@ import dao.DAOFactoryType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -20,7 +19,6 @@ public class LoginFormController extends InitializableController {
     @FXML private PasswordField passwordField;
     @FXML private Button submitButton;
     @FXML private Label bannerLabel;
-    @FXML private CheckBox administratorCheck;
 
     @FXML
     protected void submitButtonAction(ActionEvent event){
@@ -42,6 +40,5 @@ public class LoginFormController extends InitializableController {
     @Override
     public void initialize(URL url, ResourceBundle bundle){
         bannerLabel.setVisible(false);
-        administratorCheck.setVisible(false);
     }
 }

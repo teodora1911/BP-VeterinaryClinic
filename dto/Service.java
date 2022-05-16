@@ -49,4 +49,9 @@ public class Service {
     public void setIDService(Integer iDService) {
         this.IDService = iDService;
     }
+
+    @Override
+    public String toString(){
+        return name;
+    }
 }

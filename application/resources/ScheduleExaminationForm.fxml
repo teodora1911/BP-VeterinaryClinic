@@ -44,12 +44,12 @@
             <Font name="Arial" size="17.0" />
          </font>
       </TextField>
-      <Button layoutX="572.0" layoutY="426.0" mnemonicParsing="false" onAction="#submit" prefHeight="40.0" prefWidth="99.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 10; -fx-border-color: #1c3e74; -fx-border-radius: 10; -fx-border-width: 2;" text="Zakaži" textFill="#1c3e74">
+      <Button layoutX="576.0" layoutY="427.0" mnemonicParsing="false" onAction="#submit" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #f7f7f7; -fx-background-radius: 50; -fx-border-color: #af1010; -fx-border-radius: 50;" text="Zakaži" textAlignment="CENTER" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="20.0" />
          </font>
       </Button>
-      <Label fx:id="bannerLabel" alignment="CENTER" layoutX="15.0" layoutY="427.0" prefHeight="40.0" prefWidth="400.0" text="Niste unijeli korektne podatke!" textAlignment="CENTER" textFill="#af1010" visible="false">
+      <Label fx:id="bannerLabel" alignment="CENTER" layoutX="15.0" layoutY="427.0" prefHeight="40.0" prefWidth="400.0" text="Niste unijeli korektne podatke." textAlignment="CENTER" textFill="#af1010" visible="false">
          <font>
             <Font name="Arial" size="17.0" />
          </font>

@@ -7,24 +7,19 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="viewAppointmentsButton" alignment="CENTER" layoutX="150.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Pregledaj zahtjeve za preglede" textAlignment="CENTER" textFill="#1d2a75">
+      <Button fx:id="viewAppointmentsButton" alignment="CENTER" layoutX="275.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Zahtjevi" textAlignment="CENTER" textFill="#1d2a75">
          <font>
             <Font name="Arial" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="viewExaminationsButton" alignment="CENTER" layoutX="150.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Pregledi" textAlignment="CENTER" textFill="#1d2a75">
+      <Button fx:id="viewExaminationsButton" alignment="CENTER" layoutX="275.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-background-radius: 50; -fx-border-radius: 50;" text="Pregledi" textAlignment="CENTER" textFill="#1d2a75">
          <font>
             <Font name="Arial" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="viewMedicalRecordsButton" alignment="CENTER" layoutX="150.0" layoutY="375.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #efefe8ff; -fx-border-color: #E3170AFF; -fx-border-width: 2; -fx-background-radius: 5; -fx-border-radius: 5;" text="Pregledaj medicinske zapise" textAlignment="CENTER" textFill="#1d2a75">
-         <font>
-            <Font name="Arial" size="23.0" />
-         </font>
-      </Button>
-      <Label alignment="CENTER" layoutX="275.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="250.0" text="Dobrodošli" textAlignment="CENTER" textFill="#1d2a75" textOverrun="CENTER_ELLIPSIS">
+      <Label alignment="CENTER" layoutX="225.0" layoutY="38.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="250.0" text="Dobrodošli" textAlignment="CENTER" textFill="#1d2a75" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Arial Narrow Bold" size="45.0" />
          </font>
@@ -39,7 +34,7 @@
             </Lighting>
          </effect>
       </Label>
-      <ImageView fitHeight="70.0" fitWidth="75.0" layoutX="193.0" layoutY="50.0">
+      <ImageView fitHeight="70.0" fitWidth="75.0" layoutX="139.0" layoutY="38.0">
          <image>
             <Image url="file:/D:/TEODORA/III/BP/PROJEKTNI%20ZADATAK/PawSpiracy/pictures/logo.jpg" />
          </image>

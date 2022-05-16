@@ -59,7 +59,6 @@ public class ExaminationDetailsFormController extends InitializableController {
     @FXML private TableColumn<ExaminationHasService, String> nameServiceColumn;
     @FXML private TableColumn<ExaminationHasService, Double> priceServiceColumn;
     @FXML private TableColumn<ExaminationHasService, Integer> quantityServiceColumn;
-    @FXML private TableColumn<ExaminationHasService, Double> priceColumn;
 
     @FXML private Tab spentMedicinesTab;
     @FXML private TableView<SpentMedicine> spentMedicineTable;
@@ -126,12 +125,6 @@ public class ExaminationDetailsFormController extends InitializableController {
 			@Override
 			public ObservableValue<Integer> call(TableColumn.CellDataFeatures<ExaminationHasService, Integer> column){
                 return new SimpleIntegerProperty(column.getValue().getQuantity()).asObject();
-            }
-		});
-        priceColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ExaminationHasService, Double>, ObservableValue<Double>>(){
-			@Override
-			public ObservableValue<Double> call(TableColumn.CellDataFeatures<ExaminationHasService, Double> column){
-                return new SimpleDoubleProperty(column.getValue().getCost()).asObject();
             }
 		});
 
@@ -250,11 +243,17 @@ public class ExaminationDetailsFormController extends InitializableController {
         Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
         if(selectedTab != null) {
             if(selectedTab.equals(servicesTab)){
-                // ExaminationHasService update
+                ExaminationHasService selectedS = serviceTable.getSelectionModel().getSelectedItem();
+                if(selectedS != null) {
+                    UpdateQuantityFormController.selectedS = selectedS;
+                    UpdateQuantityFormController.selectedSM = null;
+                    new UpdateQuantityFormController().show();
+                }
             } else if (selectedTab.equals(spentMedicinesTab)){
                 SpentMedicine selectedSM = spentMedicineTable.getSelectionModel().getSelectedItem();
                 if(selectedSM != null) {
-                    UpdateQuantityFormController.selected = selectedSM;
+                    UpdateQuantityFormController.selectedSM = selectedSM;
+                    UpdateQuantityFormController.selectedS = null;
                     new UpdateQuantityFormController().show();
                 }
             } else {
@@ -272,20 +271,22 @@ public class ExaminationDetailsFormController extends InitializableController {
         Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
         if(selectedTab != null) {
             if(selectedTab.equals(servicesTab)){
-                // ExaminationHasService delete
+                ExaminationHasService selectedS = serviceTable.getSelectionModel().getSelectedItem();
+                if(selectedS != null){
+                    DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().deleteService(selectedS);
+                }
             } else if (selectedTab.equals(spentMedicinesTab)){
                 SpentMedicine selectedSM = spentMedicineTable.getSelectionModel().getSelectedItem();
                 if(selectedSM != null) {
                     DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().deleteSpentMedicine(selectedSM);
-                    refresh();
                 }
             } else {
                 Treatment selectedT = treatmentsTable.getSelectionModel().getSelectedItem();
                 if(selectedT != null) {
                     DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().deleteTreatment(selectedT);
-                    refresh();
                 }
             }
+            refresh();
         }
     }
 

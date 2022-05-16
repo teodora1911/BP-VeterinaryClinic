@@ -73,17 +73,17 @@
             <Font name="Franklin Gothic Medium" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="medicineSearch" layoutX="413.0" layoutY="357.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Izaberi" textFill="#1c3e74">
+      <Button fx:id="medicineSearch" layoutX="403.0" layoutY="357.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 50; -fx-border-radius: 50;" text="Izaberi" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="submitButton" layoutX="275.0" layoutY="432.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #1c3e74; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2;" text="Završi" textAlignment="CENTER" textFill="#af1010">
+      <Button fx:id="submitButton" layoutX="303.0" layoutY="433.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #1c3e74; -fx-background-radius: 50; -fx-border-radius: 50;" text="Završi" textAlignment="CENTER" textFill="#af1010">
          <font>
             <Font name="Franklin Gothic Medium" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="refreshButton" layoutX="539.0" layoutY="357.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 15; -fx-border-radius: 15;" text="Osvježi" textFill="#1c3e74">
+      <Button fx:id="refreshButton" layoutX="552.0" layoutY="357.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #af1010; -fx-background-radius: 50; -fx-border-radius: 50;" text="Osvježi" textFill="#1c3e74">
          <font>
             <Font name="Franklin Gothic Medium" size="18.0" />
          </font>

@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import dao.DAOFactory;
 import dao.DAOFactoryType;
+import dto.ExaminationHasService;
 import dto.SpentMedicine;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,7 +19,8 @@ public class UpdateQuantityFormController extends InitializableController {
     @FXML private Button addButton;
     @FXML private Label bannerLabel;
 
-    public static SpentMedicine selected;
+    public static SpentMedicine selectedSM;
+    public static ExaminationHasService selectedS;
 
     public UpdateQuantityFormController() {
         super("UpdateQuantityForm", "");
@@ -26,15 +28,29 @@ public class UpdateQuantityFormController extends InitializableController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(selected != null) {
-            mainLabel.setText(selected.toString());
-            quantityField.setText(String.valueOf(selected.getQuantity()));
+        if(selectedSM != null) {
+            mainLabel.setText(selectedSM.toString());
+            quantityField.setText(String.valueOf(selectedSM.getQuantity()));
             addButton.setOnAction(e -> {
                 try{
                     int newQuantity = Integer.parseInt(quantityField.getText());
                     if(newQuantity < 1) { throw new IllegalArgumentException(); }
 
-                    DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().updateSpentMedicine(selected, newQuantity);
+                    DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().updateSpentMedicine(selectedSM, newQuantity);
+                    stage.close();
+                } catch (Exception exc){
+                    bannerLabel.setVisible(true);
+                }
+            });
+        } else if (selectedS != null) {
+            mainLabel.setText(selectedS.toString());
+            quantityField.setText(String.valueOf(selectedS.getQuantity()));
+            addButton.setOnAction(e -> {
+                try{
+                    int newQuantity = Integer.parseInt(quantityField.getText());
+                    if(newQuantity < 1) { throw new IllegalArgumentException(); }
+
+                    DAOFactory.getFactory(DAOFactoryType.MySQL).getExaminationDAO().updateService(selectedS, newQuantity);
                     stage.close();
                 } catch (Exception exc){
                     bannerLabel.setVisible(true);

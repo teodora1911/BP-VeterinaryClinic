@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: white;">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="297.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="75.0" text="Datum:" textFill="#1c3e74">
          <font>
@@ -53,10 +53,9 @@
                         <TableView fx:id="serviceTable" layoutX="-2.0" prefHeight="260.0" prefWidth="700.0">
                           <columns>
                             <TableColumn fx:id="IDServiceColumn" prefWidth="120.0" text="Identifikator" />
-                            <TableColumn fx:id="nameServiceColumn" prefWidth="250.0" text="Naziv" />
-                              <TableColumn fx:id="priceServiceColumn" prefWidth="120.0" text="Cijena usluge" />
-                              <TableColumn fx:id="quantityServiceColumn" prefWidth="100.0" text="Broj usluga" />
-                              <TableColumn fx:id="priceColumn" prefWidth="106.0" text="Cijena" />
+                            <TableColumn fx:id="nameServiceColumn" prefWidth="329.0" text="Naziv" />
+                              <TableColumn fx:id="priceServiceColumn" prefWidth="133.0" text="Cijena usluge" />
+                              <TableColumn fx:id="quantityServiceColumn" prefWidth="115.0" text="Broj usluga" />
                           </columns>
                         </TableView>
                      </children></AnchorPane>

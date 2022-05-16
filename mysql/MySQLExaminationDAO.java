@@ -304,7 +304,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                  */
                 while(rs.next()){
                     Service service = new Service(rs.getInt(2), rs.getString(3), rs.getDouble(4));
-                    ExaminationHasService ehs = new ExaminationHasService(service, rs.getInt(5), rs.getDouble(6));
+                    ExaminationHasService ehs = new ExaminationHasService(examination, service, rs.getInt(5), rs.getDouble(6));
                     services.add(ehs);
                 }
             } catch (SQLException e){
@@ -320,7 +320,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
     public void addService(Examination examination, Service service, Integer quantity) {
         if(examination != null && examination.getIDExamination() != null && service != null && service.getIDService() != null && quantity != null) {
             resetAll();
-            final String query = "{CALL add_service_examination(?, ?, ?, ?, ?)}";
+            final String query = "{CALL add_service_examination(?, ?, ?, ?)}";
 
             try{
                 connection = DBUtil.getConnection();
@@ -328,12 +328,11 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                 cs.setInt(1, examination.getIDExamination());
                 cs.setInt(2, service.getIDService());
                 cs.setInt(3, quantity);
-                cs.registerOutParameter(4, Types.DECIMAL);
-                cs.registerOutParameter(5, Types.TINYINT);
+                cs.registerOutParameter(4, Types.TINYINT);
                 cs.execute();
 
-                if(!cs.getBoolean(5)){
-                    System.out.println("Usluga nije uspjesno dodata.");
+                if(!cs.getBoolean(4)){
+                    AppUtil.showAltert(AlertType.ERROR, "Neuspješno dodavanje usluge.", ButtonType.OK);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -344,23 +343,22 @@ public class MySQLExaminationDAO implements IExaminationDAO {
     }
 
     @Override
-    public void updateService(Examination examination, Service service, Integer quantity) {
-        if(examination != null && examination.getIDExamination() != null && service != null && service.getIDService() != null && quantity != null) {
+    public void updateService(ExaminationHasService service, Integer quantity) {
+        if(service != null && service.getExamination() != null && service.getService() != null && quantity != null) {
             resetAll();
-            final String query = "{CALL update_service_examination(?, ?, ?, ?, ?)}";
+            final String query = "{CALL update_service_examination(?, ?, ?, ?)}";
 
             try{
                 connection = DBUtil.getConnection();
                 cs = connection.prepareCall(query);
-                cs.setInt(1, examination.getIDExamination());
-                cs.setInt(2, service.getIDService());
+                cs.setInt(1, service.getExamination().getIDExamination());
+                cs.setInt(2, service.getService().getIDService());
                 cs.setInt(3, quantity);
-                cs.registerOutParameter(4, Types.DECIMAL);
-                cs.registerOutParameter(5, Types.TINYINT);
+                cs.registerOutParameter(4, Types.TINYINT);
                 cs.execute();
 
-                if(!cs.getBoolean(5)){
-                    System.out.println("Neuspjesna izmjena usluge.");
+                if(!cs.getBoolean(4)){
+                    AppUtil.showAltert(AlertType.ERROR, "Neuspješno azuriranje usluge.", ButtonType.OK);
                 }
             } catch (SQLException e){
                 e.printStackTrace();
@@ -371,16 +369,16 @@ public class MySQLExaminationDAO implements IExaminationDAO {
     }
 
     @Override
-    public void deleteService(Examination examination, Service service) {
-        if(examination != null && examination.getIDExamination() != null && service != null && service.getIDService() != null) {
+    public void deleteService(ExaminationHasService service) {
+        if(service != null && service.getExamination() != null && service.getService() != null) {
             resetAll();
             final String query = "DELETE FROM examinationhasservice WHERE Examination=? AND Service=?";
 
             try {
                 connection = DBUtil.getConnection();
                 ps = connection.prepareStatement(query);
-                ps.setInt(1, examination.getIDExamination());
-                ps.setInt(2, service.getIDService());
+                ps.setInt(1, service.getExamination().getIDExamination());
+                ps.setInt(2, service.getService().getIDService());
                 ps.execute();
             } catch (SQLException e) {
                e.printStackTrace();

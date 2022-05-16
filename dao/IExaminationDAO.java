@@ -29,8 +29,8 @@ public interface IExaminationDAO {
     List<ExaminationHasService> getServicesFrom(Examination examination);
 
     void addService(Examination examination, Service service, Integer quantity);
-    void updateService(Examination examination, Service service, Integer quantity);
-    void deleteService(Examination examination, Service service);
+    void updateService(ExaminationHasService service, Integer quantity);
+    void deleteService(ExaminationHasService service);
 
     void addTreatment(Treatment treatment);
     void updateTreatment(Treatment treatment);
