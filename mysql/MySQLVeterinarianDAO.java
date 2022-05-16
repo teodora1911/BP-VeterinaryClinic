@@ -9,9 +9,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.AppUtil;
 import dao.IVeterinarianDAO;
 import dto.Service;
 import dto.Veterinarian;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 
 public class MySQLVeterinarianDAO implements IVeterinarianDAO {
 
@@ -45,7 +48,7 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
                 veterinariansDetails.add(new Veterinarian(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, ps, rs);
         }
@@ -79,7 +82,7 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
                                                     cs.getString(5), 
                                                       cs.getString(6));
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, cs, rs);
         }
@@ -111,7 +114,7 @@ public class MySQLVeterinarianDAO implements IVeterinarianDAO {
                     services.add(service);
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, ps, rs);
             }

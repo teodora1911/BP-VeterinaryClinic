@@ -63,7 +63,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, ps, rs);
         }
@@ -95,7 +95,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                 return false;
             }
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, cs, rs);
         }
@@ -129,7 +129,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                     return true;
                 }
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, cs, rs);
             }
@@ -199,7 +199,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                 examinations.add(examination);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, ps, rs);
         }
@@ -239,7 +239,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                     treatments.add(treatment);
                 }
             } catch (SQLException e) {
-               e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, ps, rs);
             }
@@ -275,7 +275,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                    medicines.add(spentMedicine);
                }
            } catch (SQLException e){
-               e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
            } finally {
                DBUtil.close(connection, ps, rs);
            }
@@ -308,7 +308,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                     services.add(ehs);
                 }
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, ps, rs);
             }
@@ -335,7 +335,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                     AppUtil.showAltert(AlertType.ERROR, "Neuspješno dodavanje usluge.", ButtonType.OK);
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, cs, rs);
             }
@@ -361,7 +361,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                     AppUtil.showAltert(AlertType.ERROR, "Neuspješno azuriranje usluge.", ButtonType.OK);
                 }
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, cs, rs);
             }
@@ -381,7 +381,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                 ps.setInt(2, service.getService().getIDService());
                 ps.execute();
             } catch (SQLException e) {
-               e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, ps, rs);
             }
@@ -412,7 +412,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                     System.out.println("Nije dodato.");
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, cs, rs);
             }
@@ -443,7 +443,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                     System.out.println("Nije izmjenjeno.");
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, cs, rs);
             }
@@ -462,7 +462,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                 ps.setInt(2, treatment.getMedicine().getIDMedicine());
                 ps.execute();
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, ps, rs);
             }
@@ -487,7 +487,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                     AppUtil.showAltert(AlertType.ERROR, "Nema dovoljno lijeka.", ButtonType.OK);
                 }
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, cs, rs);
             }
@@ -512,7 +512,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                     AppUtil.showAltert(AlertType.ERROR, "Nema dovoljno lijeka.", ButtonType.OK);
                 }
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, cs, rs);
             }
@@ -531,7 +531,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                 ps.setInt(2, medicine.getMedicine().getIDMedicine());
                 ps.execute();
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, ps, rs);
             }
@@ -552,7 +552,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
 
                 return cs.getBigDecimal(2);
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, cs, rs);
             }
@@ -575,7 +575,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                 payments.add(payment);
             }
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, ps, rs);
         }
@@ -603,7 +603,7 @@ public class MySQLExaminationDAO implements IExaminationDAO {
                     AppUtil.showAltert(AlertType.ERROR, "Racun nije izdat.", ButtonType.OK);
                 }
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, cs, rs);
             }

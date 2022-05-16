@@ -329,6 +329,8 @@ public class ExaminationDetailsFormController extends InitializableController {
                    System.out.println("Greska!");
                 }
             }
+        } else {
+            stage.close();
         }
     }
 

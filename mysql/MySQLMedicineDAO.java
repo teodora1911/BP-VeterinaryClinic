@@ -8,10 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.AppUtil;
 import dao.IMedicineDAO;
 import dto.Manufacturer;
 import dto.Medicine;
 import dto.MedicineType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 
 public class MySQLMedicineDAO implements IMedicineDAO {
 
@@ -41,7 +44,7 @@ public class MySQLMedicineDAO implements IMedicineDAO {
                 types.add(new MedicineType(resultSet.getInt(1), resultSet.getString(2)));
             }
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, ps, resultSet);
         }
@@ -63,7 +66,7 @@ public class MySQLMedicineDAO implements IMedicineDAO {
                 manufacturers.add(new Manufacturer(resultSet.getInt(1), resultSet.getString(2)));
             }
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, ps, resultSet);
         }
@@ -92,7 +95,7 @@ public class MySQLMedicineDAO implements IMedicineDAO {
                                             resultSet.getInt(5), new MedicineType(resultSet.getString(6))));
             }
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, cs, resultSet);
         }

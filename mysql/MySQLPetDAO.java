@@ -72,7 +72,7 @@ public class MySQLPetDAO implements IPetDAO {
                 pets.add(pet);
             }
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, ps, rs);
         }
@@ -99,7 +99,7 @@ public class MySQLPetDAO implements IPetDAO {
                 pet = new Pet(rs.getInt(1), rs.getString(2), rs.getDate(3), (Integer)rs.getObject(4), gender, (Double)rs.getObject(6), null, species, rs.getString(8), rs.getString(9));
             }
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, ps, rs);
         }
@@ -129,7 +129,7 @@ public class MySQLPetDAO implements IPetDAO {
                     breeds.add(breed);
                 }
             } catch(SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, ps, rs);
             }
@@ -153,7 +153,7 @@ public class MySQLPetDAO implements IPetDAO {
                 species.add(s);
             }
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, ps, rs);
         }
@@ -176,7 +176,7 @@ public class MySQLPetDAO implements IPetDAO {
                 genders.add(gender);
             }
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, ps, rs);
         }
@@ -201,7 +201,7 @@ public class MySQLPetDAO implements IPetDAO {
                     breeds.add(breed);
                 }
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, ps, rs);
             }
@@ -236,7 +236,7 @@ public class MySQLPetDAO implements IPetDAO {
                     AppUtil.showAltert(AlertType.ERROR, "Neupjesno azuriranje", ButtonType.OK);
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, cs, rs);
             }
@@ -255,7 +255,7 @@ public class MySQLPetDAO implements IPetDAO {
                 cs.setInt(2, breed.getIDBreed());
                 cs.execute();
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, cs, rs);
             }
@@ -274,7 +274,7 @@ public class MySQLPetDAO implements IPetDAO {
                 ps.setInt(2, breed.getIDBreed());
                 ps.execute();
             } catch (SQLException e){
-                e.printStackTrace();
+                AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
             } finally {
                 DBUtil.close(connection, ps, rs);
             }

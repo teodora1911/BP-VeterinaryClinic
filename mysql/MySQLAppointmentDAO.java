@@ -9,11 +9,14 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.AppUtil;
 import constants.AppointmentsChoices;
 import dao.IAppointmentDAO;
 import dto.Appointment;
 import dto.PetOwner;
 import dto.Veterinarian;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 
 public class MySQLAppointmentDAO  implements IAppointmentDAO {
 
@@ -54,7 +57,7 @@ public class MySQLAppointmentDAO  implements IAppointmentDAO {
                 return false;
             }
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally {
             DBUtil.close(connection, cs, rs);
         }
@@ -93,7 +96,7 @@ public class MySQLAppointmentDAO  implements IAppointmentDAO {
             }
 
         } catch (SQLException e){
-            e.printStackTrace();
+            AppUtil.showAltert(AlertType.ERROR, String.valueOf(e.getErrorCode()), ButtonType.OK);
         } finally{
             DBUtil.close(connection, ps, rs);
         }
